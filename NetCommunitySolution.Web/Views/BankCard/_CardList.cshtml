@@ -1,0 +1,24 @@
+﻿@model List<NetCommunitySolution.Web.Models.BankCards.BankCardModel>
+
+
+@foreach (var item in Model)
+{
+
+    <div class="weui-form-preview">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">@item.Bank</label>
+                <em class="weui-form-preview__value">
+                    @item.No
+                </em>
+            </div>
+        </div>
+        <div class="weui-form-preview__ft">
+            @if (item.BankCardMode == NetCommunitySolution.Domain.BankCards.BankCardMode.Credit)
+            {
+                <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="@Url.Action("Payment","Order")">借款</a>
+            }
+        </div>
+    </div>
+    <br />
+}

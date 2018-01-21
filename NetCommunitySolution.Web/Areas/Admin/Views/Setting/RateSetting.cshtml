@@ -1,0 +1,156 @@
+﻿@model NetCommunitySolution.Domain.Configuration.AccountSetting
+@using NetCommunitySolution.Domain.Configuration;
+@{
+    ViewBag.Title = "费率配置";
+    ViewBag.ActiveMenu = "Setting"; //The menu item will be active for this page.
+    ViewBag.ActiveItem = "Rate-Setting"; //The menu item will be active for this page.
+}
+
+
+@if (!String.IsNullOrEmpty(ViewBag.Result))
+{
+    <script type="text/javascript">
+        layer.open({
+            title: '修改配置'
+            , content: '费率配置保存成功'
+        });
+    </script>
+}
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>费率配置</legend>
+</fieldset>
+@using (Html.BeginForm("RateSetting", "Setting", FormMethod.Post, new { @id = "rate-setting", @class = "layui-form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="layui-form-item">
+        <div class="layui-row">
+            <div class="layui-col-md2 layui-col-md-offset10">
+                <button class="layui-btn layui-btn-primary" name="save-continue">开通</button>
+                <button class="layui-btn layui-btn-normal" name="save">保存</button>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.BaseRate)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.BaseRate)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.VendorRate)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.VendorRate)
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.MemberRate)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.MemberRate)
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.CommonRate)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.CommonRate)
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.Payment)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.Payment)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.PaymentUrl)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.PaymentUrl)
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.CallBackUrl)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.CallBackUrl)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.AppId)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.AppId)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.AppSecret)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.AppSecret)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.AgencyFee)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.AgencyFee)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.TradeLimit)
+
+        <div class="layui-input-block">
+            @Html.LayuiCheckBoxFor(model => model.TradeLimit)
+        </div>
+    </div>
+
+
+    <div class="layui-form-item trade-panel">
+        @Html.LayUiLabelFor(model => model.MaxTrade)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.MaxTrade)
+        </div>
+    </div>
+    <div class="layui-form-item trade-panel">
+        @Html.LayUiLabelFor(model => model.MinTrade)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.MinTrade)
+        </div>
+    </div>
+}
+<script>
+    layui.use('form', function () {
+        var form = layui.form;
+
+        //各种基于事件的操作，下面会有进一步介绍
+        form.on('checkbox(@(Html.FieldIdFor(model=>model.TradeLimit)))', function (data) {
+            toggleTradeLimit(data.elem.checked);
+        });
+        form.render();
+    });
+
+
+        toggleTradeLimit(document.getElementById("@Html.FieldIdFor(model=>model.TradeLimit)").checked);
+        function toggleTradeLimit(checked) {
+            if (checked) {
+                $(".trade-panel").show();
+            }
+            else {
+                $(".trade-panel").hide();
+            }
+
+        }
+</script>
+

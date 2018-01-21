@@ -1,0 +1,26 @@
+﻿<table id="pay-grid" lay-filter="pay-grid-filter"></table>
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            elem: '#pay-grid'
+            , height: 315
+            , method: 'POST' //如果无需自定义HTTP类型，可不加该参数
+            , url: '@Url.Action("PayReport","Order")' //数据接口
+            , where: addAntiForgeryToken()
+            , cols: [[ //表头
+                { field: 'Id', title: 'ID', width: 80, sort: true, fixed: 'left' }
+                , { field: 'OrderSn', title: '订单号', width: 150, sort: true }
+                , { field: 'Account', title: '交易金额', sort: true }
+                , { field: 'DateTime', title: '交易时间', width: 140 }
+            ]]
+            , page: true
+            , method: "Post"
+            , id: "pay-table"
+        });
+
+    });
+
+</script>

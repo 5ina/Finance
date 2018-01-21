@@ -1,0 +1,116 @@
+﻿@model NetCommunitySolution.Web.Areas.Admin.Models.Customers.CustomerListModel
+@{
+    ViewBag.Title = "用户管理";
+    ViewBag.ActiveMenu = "Customer"; //The menu item will be active for this page.
+    ViewBag.ActiveItem = "Customer-List"; //The menu item will be active for this page.
+}
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>用户管理</legend>
+</fieldset><div class="layui-row">
+
+    <div class="layui-col-xs1 layui-col-md-offset11">
+        <div class="grid-demo grid-demo-bg1">            
+        </div>
+    </div>
+</div>
+<div class="layui-form-item layui-form">
+    <div class="layui-inline">
+        <label class="layui-form-label">关键字</label>
+        <div class="layui-input-inline">
+            <input type="text" placeholder="关键字查询" name="@(Html.FieldIdFor(model=>model.Keywords))" class="layui-input" id="@(Html.FieldIdFor(model=>model.Keywords))" />
+           
+        </div>
+        <div class="layui-input-inline">
+            @Html.LayuiDropDownListFor(model => model.IsAgent,
+new List<SelectListItem> {
+                    new SelectListItem() { Text = "全部用户", Value = (null as bool?).ToString() },
+                    new SelectListItem() { Text = "代理商", Value = "true" },
+                    new SelectListItem() { Text = "终端用户", Value = "false" }
+})
+        </div>
+    </div>
+        <div class="layui-inline">
+            <button class="layui-btn layui-btn-warm" id="customer-search"><i class="fa fa-search"></i>搜索</button>
+        </div>
+    </div>
+<table class="layui-hide" id="customer-grid" lay-filter="customer-grid-filter"></table>
+@Html.AntiForgeryToken()
+
+<script type="text/html" id="op">
+    <!-- 这里的 checked 的状态只是演示 -->
+    <a class="layui-btn layui-btn-mini layui-btn-xs" href="@Url.Action("Edit")/{{d.Id}}">查看</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script>
+layui.use('table', function(){
+  var table = layui.table;
+
+    table.render({
+        elem: '#customer-grid'
+        , url: '@Url.Action("List")'
+        , where: additionalData()
+        , cols: [[
+            { field: 'Id', title: 'ID', sort: true }
+            , { field: 'NickName', title: '用户名' }
+            , { field: 'Mobile', title: '手机号' }
+            , { field: 'CreateTime', title: '创建时间', sort: true }
+            , { field: 'Id', title: '操作', toolbar: '#op' }
+        ]]
+        , page: true
+        , method: "Post"
+        ,id:"customer-table"
+    });
+    $("#customer-search").click(function () {
+        //执行重载
+        table.reload('customer-table', {
+            page: {
+                curr: 1 //重新从第 1 页开始
+            }
+            , where: additionalData()
+        });
+        });
+
+
+        //监听工具条
+        table.on('tool(customer-grid-filter)', function (obj) {
+
+            var data = obj.data;
+            if (obj.event === 'detail') {
+                layer.msg('ID：' + data.id + ' 的查看操作');
+            } else if (obj.event === 'del') {
+                layer.confirm('真的删除行么', function (index) {
+                    $.ajax({
+                        url: "/Catalog/Delete/" + obj.data.Id,
+                        type: "POST",
+                        success: function () {
+                            obj.del();
+                            layer.close(index);
+                        }
+                    })
+                });
+            } else if (obj.event === 'edit') {
+                layer.alert('编辑行：<br>' + JSON.stringify(data))
+            }
+        });
+    });
+
+
+
+    function additionalData() {
+        var data = {
+            Keywords: $('#@Html.FieldIdFor(model => model.Keywords)').val(),
+            IsAgent: $('#@Html.FieldIdFor(model=>model.IsAgent)').val()
+        };
+        addAntiForgeryToken(data);
+        return data;
+    }
+
+
+    layui.use('form', function () {
+        var form = layui.form;
+        //各种基于事件的操作，下面会有进一步介绍
+        form.render();        
+    });    
+</script>
+

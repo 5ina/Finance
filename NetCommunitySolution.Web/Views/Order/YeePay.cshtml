@@ -1,0 +1,83 @@
+﻿@model NetCommunitySolution.Web.Models.Orders.YeePaymentModel
+@{
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+    Html.AddTitleParts("我要借款");
+}
+
+<div class="page withd-page">
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "weui-cells_form", @id = "withd-form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                @Html.WELabelFor(model => model.Total)
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd coin">
+                <i class="fa fa-rmb"></i>
+            </div>
+            <div class="weui-cell__bd total">
+                @Html.WENumberFor(model => model.Total, "套现金额")
+            </div>
+        </div>
+
+        <div class="weui-cell button">
+            <div class="weui-cell__bd">
+                <input type="submit" id="withd-button" value="支付" class="weui-btn weui-btn_primary" />
+            </div>
+        </div>
+
+    }
+
+</div>
+<div class="weui-cells__tips">
+    交易费率为 @(Model.Rate * 10) ‰ ，单笔代付金额为 <i class="fa fa-rmb"></i>@(Model.PaymentFee)
+</div>
+
+<div class="weui-cells__tips">
+    即，假设交易1万元 则手续费为 @(10000 *Model.Rate / 100) +@(Model.PaymentFee) ,总数续费为 <i class="fa fa-rmb"></i>@(10000 * Model.Rate / 100 + 1) 
+</div>
+
+@if (!Model.IsAuth)
+{
+    <!--Auth Dialog-->
+    <div class="js_dialog" id="auth-div" style="display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__bd">您未通过审核，请先审核您的账户信息</div>
+            <div class="weui-dialog__ft">
+                <a href="@Url.Action("CustomerAuth","Customer")" class="weui-dialog__btn weui-dialog__btn_primary">账户审核</a>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var $dialog = $("#auth-div");
+        $dialog.fadeIn(200);
+    </script>
+}
+
+@{
+
+    var validationSummary = Html.ValidationSummary(true);
+
+    if (!MvcHtmlString.IsNullOrEmpty(validationSummary))
+    {
+        <!--Auth Dialog-->
+        <div class="js_dialog" id="validation-div" style="display: none;">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__bd">@validationSummary</div>
+                <div class="weui-dialog__ft">
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var valid = $("#validation-div");
+            valid.fadeIn(200);
+            setTimeout(valid.fadeOut(3000), 2000)
+        </script>
+    }
+}

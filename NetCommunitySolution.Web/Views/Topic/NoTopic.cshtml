@@ -1,0 +1,23 @@
+﻿@using NetCommunitySolution.Web.Models.Articles;
+@{
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+    //title
+    Html.AddTitleParts("主题不存在");
+}
+
+<div class="page topic-page" id="ph-topic">
+    <div class="error-page">
+        <div class="page__hd">
+            <h3>对不起，您访问的页面不存在</h3>
+
+        </div>
+        <div class="page__bd page__bd_spacing">
+            <div class="icon-box">
+                <i class="weui-icon-success weui-icon_msg"></i>
+            </div>
+            <div class="button-box">
+                <a href="@Url.RouteUrl("HomePage")" class="weui-btn weui-btn_plain-primary">返回首页</a>
+            </div>
+        </div>
+    </div>
+</div>

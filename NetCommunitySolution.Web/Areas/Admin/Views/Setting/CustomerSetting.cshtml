@@ -1,0 +1,102 @@
+﻿@model NetCommunitySolution.Domain.Configuration.CustomerSetting
+@using NetCommunitySolution.Domain.Configuration;
+@{
+    ViewBag.Title = "用户配置";
+    ViewBag.ActiveMenu = "Setting"; //The menu item will be active for this page.
+    ViewBag.ActiveItem = "Customer-Setting"; //The menu item will be active for this page.
+}
+
+@if (!String.IsNullOrEmpty(ViewBag.Result))
+{
+    <script type="text/javascript">
+        layer.open({
+            title: '修改配置'
+            , content: '用户配置保存成功'
+        });
+    </script>
+}
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>公共配置</legend>
+</fieldset>
+@using (Html.BeginForm("CustomerSetting", "Setting", FormMethod.Post, new { @id = "customer-setting", @class = "layui-form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="layui-form-item">
+        <div class="layui-row">
+            <div class="layui-col-md1 layui-col-md-offset11">
+                <button class="layui-btn layui-btn-normal">保存</button>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.EnabledCaptcha)
+
+        <div class="layui-input-block">
+            @Html.LayuiCheckBoxFor(model => model.EnabledCaptcha)
+        </div>
+    </div>
+    <div class="layui-form-item enabled-panel">
+        @Html.LayUiLabelFor(model => model.CaptchaLength)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.CaptchaLength)
+        </div>
+    </div>
+
+    <div class="layui-form-item enabled-panel">
+        @Html.LayUiLabelFor(model => model.CaptchaName)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.CaptchaName)
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.PasswordMaxLength)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.PasswordMaxLength)
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.PasswordMinLength)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.PasswordMinLength)
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.ModifyNickName)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.ModifyNickName)
+
+        </div>
+    </div>
+
+}
+    <script>
+    layui.use('form', function () {
+        var form = layui.form;
+        //各种基于事件的操作，下面会有进一步介绍
+        form.on('checkbox(@(Html.FieldIdFor(model=>model.EnabledCaptcha)))', function (data) {
+            toggleCaptcha(data.elem.checked);
+        });
+        form.render();
+    });
+
+    toggleCaptcha(document.getElementById("@Html.FieldIdFor(model=>model.EnabledCaptcha)").checked);
+    function toggleCaptcha(checked) {
+        if (checked) {
+            $(".enabled-panel").show();
+        }
+        else {
+            $(".enabled-panel").hide();
+        }
+
+    }
+
+    </script>
+

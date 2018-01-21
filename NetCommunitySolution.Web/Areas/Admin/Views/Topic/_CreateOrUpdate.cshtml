@@ -1,0 +1,127 @@
+﻿@model NetCommunitySolution.Web.Areas.Admin.Models.Articles.TopicModel
+
+@Html.HiddenFor(model => model.Id)
+
+
+<div class="layui-tab">
+    <ul class="layui-tab-title">
+        <li class="layui-this">基本信息</li>
+        <li>优化信息</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+
+            <div class="layui-form-item">
+                @Html.LayUiLabelFor(model => model.Title)
+                <div class="layui-input-block">
+                    @Html.LayUiEditorFor(model => model.Title)
+
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                @Html.LayUiLabelFor(model => model.Body)
+                <div class="layui-input-block">
+                    @Html.LayUiEditorFor(model => model.Body)
+
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                @Html.LayUiLabelFor(model => model.SeName)
+                <div class="layui-input-block">
+                    @Html.LayUiEditorFor(model => model.SeName)
+
+                </div>
+            </div>
+            <div class="layui-form-item">
+                @Html.LayUiLabelFor(model => model.SystemName)
+                <div class="layui-input-block">
+                    @Html.LayUiEditorFor(model => model.SystemName)
+
+                </div>
+            </div>
+            @if (Model.Id > 0)
+            {
+            <div class="layui-form-item">
+                @Html.LayUiLabelFor(model => model.Url)
+                <div class="layui-input-block">
+                    <div class="col-md-9">
+                        <a href="@Model.Url"> @Model.Url </a>
+                    </div>
+
+                </div>
+            </div>
+            }
+
+            <div class="layui-form-item">
+                @Html.LayUiLabelFor(model => model.Published)
+                <div class="layui-input-block">
+                    @Html.LayUiEditorFor(model => model.Published)
+
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                @Html.LayUiLabelFor(model => model.IncludeInTopMenu)
+                <div class="layui-input-block">
+                    @Html.LayUiEditorFor(model => model.IncludeInTopMenu)
+
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                @Html.LayUiLabelFor(model => model.DisplayOrder)
+                <div class="layui-input-block">
+                    @Html.LayUiEditorFor(model => model.DisplayOrder)
+
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                @Html.LayUiLabelFor(model => model.AccessibleWhenStoreClosed)
+                <div class="layui-input-block">
+                    @Html.LayuiCheckBoxFor(model => model.AccessibleWhenStoreClosed)
+
+                </div>
+            </div>
+        </div>
+        <div class="layui-tab-item">
+
+            <div class="layui-form-item">
+                @Html.LayUiLabelFor(model => model.MetaTitle)
+                <div class="layui-input-block">
+                    @Html.LayUiEditorFor(model => model.MetaTitle)
+
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                @Html.LayUiLabelFor(model => model.MetaKeywords)
+                <div class="layui-input-block">
+                    @Html.LayUiEditorFor(model => model.MetaKeywords)
+
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                @Html.LayUiLabelFor(model => model.MetaDescription)
+                <div class="layui-input-block">
+                    @Html.LayUiTextAreaFor(model => model.MetaDescription)
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    layui.use('form', function () {
+        var form = layui.form;
+        //各种基于事件的操作，下面会有进一步介绍
+        form.render();        
+    });
+
+    
+</script>

@@ -1,0 +1,44 @@
+﻿
+<div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+        <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+
+        <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
+
+            <li class="layui-nav-item @if (ViewBag.ActiveMenu == "Home") { <text> layui-nav-itemed</text>}"><a href="@Url.Content("~/Admin")">管理首页</a></li>
+            <li class="layui-nav-item @if (ViewBag.ActiveMenu == "Customer") { <text> layui-nav-itemed</text>}" ify-unselect>
+                <a href="javascript:;">用户模块</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="@Url.Action("Index","Customer")" @if (ViewBag.ActiveItem == "Customer-List") { <text> class="layui-this" </text> }>用户列表</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item @if (ViewBag.ActiveMenu == "Setting") { <text> layui-nav-itemed</text>}" ify-unselect>
+                <a href="javascript:;">配置模块</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="@Url.Action("Common","Setting")" @if (ViewBag.ActiveItem == "Common-Setting") { <text> class="layui-this" </text> }>公共配置</a></dd>
+                    <dd><a href="@Url.Action("CustomerSetting","Setting")" @if (ViewBag.ActiveItem == "Customer-Setting") { <text> class="layui-this" </text> }>用户配置</a></dd>
+                    <dd><a href="@Url.Action("MediaSetting","Setting")" @if (ViewBag.ActiveItem == "Media-Setting") { <text> class="layui-this" </text> }>媒体配置</a></dd>
+                    <dd><a href="@Url.Action("WeChatSetting","Setting")" @if (ViewBag.ActiveItem == "WeChat-Setting") { <text> class="layui-this" </text> }>微信配置</a></dd>
+                    <dd><a href="@Url.Action("SeoSetting","Setting")" @if (ViewBag.ActiveItem == "Seo-Setting") { <text> class="layui-this" </text> }>优化配置</a></dd>
+                    <dd><a href="@Url.Action("RateSetting","Setting")" @if (ViewBag.ActiveItem == "Rate-Setting") { <text> class="layui-this" </text> }>费率配置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item @if (ViewBag.ActiveMenu == "Articles") { <text> layui-nav-itemed</text>}">
+                <a href="javascript:;">内容管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="@Url.Action("Index","Topic")" @if (ViewBag.ActiveItem == "Articles-Topic") { <text> class="layui-this" </text> }>主题管理</a></dd>                    
+                </dl>
+            </li>
+
+            <li class="layui-nav-item @if (ViewBag.ActiveMenu == "Order") { <text> layui-nav-itemed</text>}">
+                <a href="javascript:;">订单管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="@Url.Action("WithdrawalsList","Order")" @if (ViewBag.ActiveItem == "Order-Withdrawals") { <text> class="layui-this" </text> }>提现管理</a></dd>
+                    <dd><a href="@Url.Action("CashList","Order")" @if (ViewBag.ActiveItem == "Order-Cash") { <text> class="layui-this" </text> }>套现管理</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">云市场</a></li>
+            <li class="layui-nav-item"><a href="">社区</a></li>
+        </ul>
+    </div>
+</div>

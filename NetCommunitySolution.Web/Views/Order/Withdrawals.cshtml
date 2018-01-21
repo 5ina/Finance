@@ -1,0 +1,79 @@
+﻿@model NetCommunitySolution.Web.Models.Orders.WithdrawalModel
+@{
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+    Html.AddTitleParts("提现");
+    @Html.IncludeScript("http://res.wx.qq.com/open/js/jweixin-1.1.0.js")
+    @Html.IncludeScript("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
+
+
+<div class="page withd-page">
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "weui-cells_form", @id = "withd-form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                @Html.WELabelFor(model => model.Total)
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd coin">
+                <i class="fa fa-rmb"></i>
+            </div>
+            <div class="weui-cell__bd total">
+                @Html.WENumberFor(model => model.Total, "提现金额")
+            </div>
+        </div>
+        <div class="weui-cell tip">
+            <div class="weui-cell__bd">
+                <span class="tip">零钱余额<i class="fa fa-rmb"></i>@Model.MaxTotal,</span>
+                <a class="max-total" href="javascript:;" onclick="maxTotal();">全部提现</a>
+                <p id="total-tip" class="total-tip"></p>
+            </div>
+        </div>
+
+        <div class="weui-cell button">
+            <div class="weui-cell__bd">
+                <input type="submit" id="withd-button" value="提现" class="weui-btn weui-btn_primary" />
+            </div>
+        </div>
+
+
+        <div class="weui-cell button">
+            <div class="weui-cell__bd">
+                <h1 id="nedw"></h1>
+            </div>
+        </div>
+
+    }
+
+    <script type="text/javascript">
+        function maxTotal() {
+            $("#@Html.FieldIdFor(model=>model.Total)").val("@Model.MaxTotal");
+            $("#withd-button").removeAttr("disabled");
+            $("#withd-button").removeClass("weui-btn_disabled");
+            $("#total-tip").html("");
+        }
+
+        $(function () {
+
+            $('#@Html.FieldIdFor(model => model.Total)').bind('input propertychange', function () {
+
+                var maxTotal = @(Model.MaxTotal);
+                var value = $(this).val();
+                if (maxTotal > value && value > 0) {
+                    $("#withd-button").removeAttr("disabled");
+                    $("#withd-button").removeClass("weui-btn_disabled");
+                    $("#total-tip").html("");
+                }
+                else {
+                    $("#withd-button").attr({ "disabled": "disabled" });
+                    $("#withd-button").addClass("weui-btn_disabled");
+                    $("#total-tip").html("输入金额超过账户余额");
+                }
+            });
+        });
+    </script>
+</div>

@@ -1,0 +1,35 @@
+﻿@model NetCommunitySolution.Web.Models.Common.TabbarMode
+
+<div class="weui-tabbar weui-footer_fixed-bottom">
+    <a href="@Url.RouteUrl("HomePage")" class="weui-tabbar__item @if (Model == NetCommunitySolution.Web.Models.Common.TabbarMode.Home) {<text>weui-bar__item_on</text>}">
+
+        <div class="weui-tabbar__icon">
+            <i class="fa fa-home"></i>
+        </div>
+        <p class="weui-tabbar__label">首页</p>
+    </a>
+    <a href="@Url.Action("List","Message")" class="weui-tabbar__item @if (Model == NetCommunitySolution.Web.Models.Common.TabbarMode.Message) {<text>weui-bar__item_on</text>}">
+        <div  style="display: inline-block;position: relative;">
+            <div class="weui-tabbar__icon">
+                <i class="fa fa-paper-plane"></i>
+            @Html.Action("MessageCount", "Message")
+            </div>
+        </div>
+        <p class="weui-tabbar__label">消息</p>
+    </a>
+
+    <a href="@Url.RouteUrl("Customer")" class="weui-tabbar__item @if (Model == NetCommunitySolution.Web.Models.Common.TabbarMode.User) {<text>weui-bar__item_on</text>}">
+        <div class="weui-tabbar__icon">
+            <i class="fa fa-user"></i>
+        </div>
+        <p class="weui-tabbar__label">我</p>
+    </a>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('.weui-tabbar__item').on('click', function () {
+            $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+        });
+    });
+</script>

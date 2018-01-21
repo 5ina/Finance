@@ -1,0 +1,134 @@
+﻿@model NetCommunitySolution.Domain.Configuration.SeoSetting
+@using NetCommunitySolution.Domain.Configuration;
+@{
+    ViewBag.Title = "优化配置";
+    ViewBag.ActiveMenu = "Setting"; //The menu item will be active for this page.
+    ViewBag.ActiveItem = "Seo-Setting"; //The menu item will be active for this page.
+}
+
+
+@if (!String.IsNullOrEmpty(ViewBag.Result))
+{
+    <script type="text/javascript">
+        layer.open({
+            title: '修改配置'
+            , content: '优化配置保存成功'
+        });
+    </script>
+}
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>优化配置</legend>
+</fieldset>
+@using (Html.BeginForm("SeoSetting", "Setting", FormMethod.Post, new { @id = "wechat-setting", @class = "layui-form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="layui-form-item">
+        <div class="layui-row">
+            <div class="layui-col-md1 layui-col-md-offset11">
+                <button class="layui-btn layui-btn-normal">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.PageTitleSeparator)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.PageTitleSeparator)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.PageTitleSeoAdjustment)
+
+        <div class="layui-input-block">
+            @Html.LayuiDropDownListFor(model => model.PageTitleSeoAdjustment, PageTitleSeoAdjustment.PagenameAfterStorename.EnumToDictionary(e => e.GetDescription()).ToList())
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.DefaultTitle)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.DefaultTitle)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.DefaultMetaKeywords)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.DefaultMetaKeywords)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.DefaultMetaDescription)
+
+        <div class="layui-input-block">
+            @Html.LayUiTextAreaFor(model => model.DefaultMetaDescription)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.AllowUnicodeCharsInUrls)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.AllowUnicodeCharsInUrls)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.CanonicalUrlsEnabled)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.CanonicalUrlsEnabled)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.ConvertNonWesternChars)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.ConvertNonWesternChars)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.CustomHeadTags)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.CustomHeadTags)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.ReservedUrlRecordSlugs)
+
+        <div class="layui-input-block">
+            @Html.LayUiTextAreaFor(model => model.ReservedUrlRecordSlugs)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.EnableCssBundling)
+
+        <div class="layui-input-block">
+            @Html.LayuiCheckBoxFor(model => model.EnableCssBundling)
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.EnableJsBundling)
+
+        <div class="layui-input-block">
+            @Html.LayuiCheckBoxFor(model => model.EnableJsBundling)
+        </div>
+    </div>
+}
+<script>
+    layui.use('form', function () {
+        var form = layui.form;
+        //各种基于事件的操作，下面会有进一步介绍
+        form.render();
+    });
+</script>
+

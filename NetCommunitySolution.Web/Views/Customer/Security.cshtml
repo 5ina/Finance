@@ -1,0 +1,88 @@
+﻿@model NetCommunitySolution.Web.Models.Customers.SecurityModel
+@{
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+}
+
+<div class="page-security">
+    <div class="weui-panel">
+        <div class="weui-panel__bd">
+            <div class="weui-media-box weui-media-box_small-appmsg">
+                <div class="weui-cells">
+
+                    <a class="weui-cell weui-cell_access" href="@Url.Action("CustomerAuth","Customer")">
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>实名认证</p>
+                        </div>
+                        @if (Model.IsAuth)
+                        {
+                            <div class="weui-cell__ft" style="font-size: 0">
+                                <i class="weui-icon-success"></i>
+                                <span style="vertical-align:middle; font-size: 17px;">已认证</span>
+
+                            </div>
+                        }
+                        else
+                        {
+
+                            <div class="weui-cell__ft" style="font-size: 0">
+                                <span style="vertical-align:middle; font-size: 17px;">未认证</span>
+
+                            </div>
+                        }
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="weui-panel">
+        <div class="weui-panel__bd">
+            <div class="weui-media-box weui-media-box_small-appmsg">
+                <div class="weui-cells">
+
+                    <a class="weui-cell weui-cell_access" href="@Url.Action("AllLogs","Account")">
+
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>账户明细</p>
+                        </div>
+                        <span class="weui-cell__ft"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        @if (Model.IsAgent)
+    {
+        <div class="weui-panel__bd">
+            <div class="weui-media-box weui-media-box_small-appmsg">
+                <div class="weui-cells">
+
+                    <a class="weui-cell weui-cell_access" href="@Url.Action("ExtensionCode", "Customer")">
+
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>我的推广码</p>
+                        </div>
+                        <span class="weui-cell__ft"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+}
+
+        <div class="weui-panel__bd">
+            <div class="weui-media-box weui-media-box_small-appmsg">
+                <div class="weui-cells">
+
+                    <a class="weui-cell weui-cell_access" href="@Url.Action("Settlement", "Customer")">
+
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>我的结算卡</p>
+                        </div>
+                        <span class="weui-cell__ft"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+

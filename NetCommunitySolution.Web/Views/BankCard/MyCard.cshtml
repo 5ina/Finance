@@ -1,0 +1,67 @@
+﻿@model NetCommunitySolution.Web.Models.BankCards.CustomerCardsModel
+@using NetCommunitySolution.Domain.BankCards;
+@{
+    Html.AddTitleParts("我的卡片");
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+}
+
+<div class="page__bd" style="height: 100%;">
+    <div class="weui-tab">
+        <div class="weui-navbar">
+            <div class="weui-navbar__item weui-bar__item_on" data-panel="panel-credit">
+                信用卡
+            </div>
+            <div class="weui-navbar__item" data-panel="panel-deposit">
+                储蓄卡
+            </div>
+        </div>
+        <div class="weui-tab__panel">
+            <div class="weui-tab-item" id="panel-credit">
+                @{
+                    var credits = Model.CardItems.Where(mo => mo.BankCardModeId == (int)BankCardMode.Credit).ToList();
+                }
+
+                @Html.Partial("_CardList", credits)
+
+                <div class="weui-form-preview">
+
+                    <div class="weui-form-preview__ft">
+                        <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="@Url.Action("NewCard", "BankCard", new { mode=(int)BankCardMode.Credit})">添加借款卡</a>
+                    </div>
+                </div>
+            </div>
+            <div class="weui-tab-item" id="panel-deposit">
+                @{
+                    var deposits = Model.CardItems.Where(mo => mo.BankCardModeId == (int)BankCardMode.Deposit).ToList();
+                }
+
+                @Html.Partial("_CardList", deposits)
+
+                <div class="weui-form-preview">
+
+                    <div class="weui-form-preview__ft">
+                        <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="@Url.Action("NewCard","BankCard", new { mode=(int)BankCardMode.Deposit})">添加结算卡</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('.weui-navbar__item').on('click', function () {
+            $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+
+            var showPanelName = $(this).data("panel");
+            showPanel(showPanelName);
+        });
+        showPanel("panel-credit");
+    });
+
+    function showPanel(obj) {
+        $(".weui-tab-item").hide();
+        $("#" + obj).show();
+    }
+</script>

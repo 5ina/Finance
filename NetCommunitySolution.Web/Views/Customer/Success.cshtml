@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+    Html.AddTitleParts("信息已保存");
+}
+<div class="page">
+    <div class="weui-msg">
+        <div class="weui-msg__icon-area">
+                <i class="weui-icon-success weui-icon_msg"></i>
+        </div>
+        <div class="weui-msg__text-area">
+            <h2 class="weui-msg__title">您的信息已保存</h2>
+        </div>
+        <div class="weui-msg__opr-area">
+            <p class="weui-btn-area">
+                <a href="@Url.RouteUrl("HomePage")" class="weui-btn weui-btn_primary">返回首页</a>
+                <a href="@Url.RouteUrl("Customer")" class="weui-btn weui-btn_default">会员中心</a>
+            </p>
+        </div>
+    </div>
+</div>

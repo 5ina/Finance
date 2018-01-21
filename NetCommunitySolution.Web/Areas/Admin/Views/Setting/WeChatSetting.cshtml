@@ -1,0 +1,83 @@
+﻿@model NetCommunitySolution.Domain.Configuration.WechatSetting
+@using NetCommunitySolution.Domain.Configuration;
+@{
+    ViewBag.Title = "微信配置";
+    ViewBag.ActiveMenu = "Setting"; //The menu item will be active for this page.
+    ViewBag.ActiveItem = "WeChat-Setting"; //The menu item will be active for this page.
+}
+
+@if (!String.IsNullOrEmpty(ViewBag.Result))
+{
+    <script type="text/javascript">
+        layer.open({
+            title: '修改配置'
+            , content: '微信配置保存成功'
+        });
+    </script>
+}
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>微信配置</legend>
+</fieldset>
+@using (Html.BeginForm("WeChatSetting", "Setting", FormMethod.Post, new { @id = "wechat-setting", @class = "layui-form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="layui-form-item">
+        <div class="layui-row">
+            <div class="layui-col-md1 layui-col-md-offset11">
+                <button class="layui-btn layui-btn-normal">保存</button>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.AppId)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.AppId)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.AppSecret)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.AppSecret)
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.Key)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.Key)
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.MchId)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.MchId)
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.NotifyUrl)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.NotifyUrl)
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.Token)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.Token)
+        </div>
+    </div>
+
+}
+<script>
+    layui.use('form', function () {
+        var form = layui.form;
+        //各种基于事件的操作，下面会有进一步介绍
+        form.render();
+    });
+</script>
+

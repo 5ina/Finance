@@ -1,0 +1,105 @@
+﻿@model NetCommunitySolution.Web.Models.BankCards.BankCardModel
+@{
+    /**/
+
+    ViewBag.Title = "添加银行卡";
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+}
+
+<div class="weui-cells__title">请填写银行卡相关信息</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "weui-cells_form", @id = "card-form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.BankCardModeId)
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            @Html.WELabelFor(model => model.Name)
+        </div>
+        <div class="weui-cell__bd">
+            @Html.TextBoxFor(model => model.Name, new { @readonly = "readonly", @class = "weui-input" })
+        </div>
+
+    </div>
+
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            @Html.WELabelFor(model => model.BankCode)
+        </div>
+        <div class="weui-cell__bd">
+
+            @Html.WEDropDownListFor(model => model.BankCode, Model.AvailableBankCodes)
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            @Html.WELabelFor(model => model.No)
+        </div>
+        <div class="weui-cell__bd">
+
+            @Html.WEEditorFor(model => model.No, true, "请输入银行卡号", "银行卡号输入错误", "[0-9]*")
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd">
+            @Html.WELabelFor(model => model.Mobile)
+        </div>
+        <div class="weui-cell__bd">
+            @Html.WEEditorFor(model => model.Mobile, true, "请输入手机号", "手机号码错误", "[0-9]*")
+        </div>
+    </div>
+
+    if (Model.BankCardMode == NetCommunitySolution.Domain.BankCards.BankCardMode.Deposit)
+    {
+
+
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                @Html.WELabelFor(model => model.Province)
+            </div>
+            <div class="weui-cell__bd">
+                @Html.WEDropDownListFor(model => model.Province, Html.AddressToSelectListItem())
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                @Html.WELabelFor(model => model.City)
+            </div>
+            <div class="weui-cell__bd">
+                @Html.WEDropDownListFor(model => model.City, Html.CityToSelectListItem())
+            </div>
+        </div>
+    }
+
+    <div class="weui-cells__tips">
+        本平台只能绑定认证后的用户卡片
+    </div>
+    <div class="weui-btn-area">
+        <input type="submit" value="确定" class="weui-btn weui-btn_primary" />
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $("#@Html.FieldIdFor(model=>model.Province)").change(function (e) {
+                if ($(this).val()) {
+                    $.ajax({
+                        url: "@Url.Action("GetCityByProvince")",
+                        type: "POST",
+                        data: { Province: $(this).val() },
+                        success: function (data) {
+                            $("#@Html.FieldIdFor(model => model.City) option").remove();
+                            $("#@Html.FieldIdFor(model=>model.City)").append("<option value=''>请选择城市</option>");
+                            $.each(data.result, function (id, item) {
+                                $("#@Html.FieldIdFor(model=>model.City)").append("<option value='" + item.name + "'>" + item.name + "</option>");
+                            });
+                        }
+                    });
+                }
+                else {  $("#@Html.FieldIdFor(model => model.City) option").remove();
+                    $("#@Html.FieldIdFor(model=>model.City)").append("<option value=''>请先选择省份</option>");
+                }
+            });
+        });
+
+    </script>
+}

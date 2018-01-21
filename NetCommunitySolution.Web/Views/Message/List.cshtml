@@ -1,0 +1,37 @@
+﻿@model List<NetCommunitySolution.Web.Models.Messages.MessageModel>
+@{
+    ViewBag.Title = "我的消息";
+    Layout = "~/Views/Shared/_MessageLayout.cshtml";
+}
+
+<div class="page panel page-message">
+    <div class="page__bd">
+        <div class="weui-panel weui-panel_access">
+            <div class="weui-panel__hd">我的消息 </div>
+
+            @foreach (var item in Model)
+            {
+                <div class="weui-panel__bd">
+                    <a href="@Url.Action("Message", "Message", new { messageId = item.Id })" class="weui-media-box weui-media-box_appmsg">
+                        <div class="weui-media-box__hd">
+                            @if (!item.IsRead)
+                            {
+                                <i class="weui-icon-info-circle"></i>
+                            }
+                            else
+                            {
+                                <i class="weui-icon-info weui-icon_msg"></i>
+                            }
+
+                        </div>
+                        <div class="weui-media-box__bd">
+                            <h4 class="weui-media-box__title">@item.Subject</h4>
+                            <p class="weui-media-box__desc">@item.CreationTime.ToString("yyyy/MM/dd hh:mm")</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

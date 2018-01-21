@@ -1,0 +1,64 @@
+﻿
+
+@{
+    ViewBag.ActiveMenu = "Home"; //The menu item will be active for this page.
+}
+@section scripts
+{
+    @Html.IncludeStyle("~/Scripts/echarts.min.js")
+}
+@Html.AntiForgeryToken()
+
+<div style="padding:15px" class="home-page">
+
+    <div class="layui-row">
+        <div class="layui-col-md4">
+            <!--代理商-->
+            @Html.Action("CustomerReport", "Customer")
+        </div>
+
+        <div class="layui-col-md4">
+            <!-- 总代理费 -->
+            @Html.Action("AgentTotal", "Order")
+        </div>
+
+        <div class="layui-col-md4">
+            <!-- 总代理费 -->
+            @Html.Action("Trading", "Order")
+        </div>
+    </div>
+    <!-- 数据图表 -->
+    <div class="layui-row">
+
+        <div class="layui-col-md4">
+            <!--代理商-->
+            @Html.Action("CustomerCharts", "Customer")
+
+        </div>
+
+        <div class="layui-col-md4">
+            <!--代理商-->
+
+        </div>
+    </div>
+    <!-- 账户交易 -->
+    <div class="layui-row">
+        <div class="layui-col-md6">
+            <div class="layui-border-box">
+                <div class="layui-layer-title">
+                    交易记录
+                </div>
+                @Html.Action("CashReport", "Order")
+            </div>
+        </div>
+
+        <div class="layui-col-md6">
+            <div class="layui-border-box">
+                <div class="layui-layer-title">
+                    代付记录
+                </div>
+                @Html.Action("PayReport", "Order")
+            </div>
+        </div>
+    </div>
+</div>

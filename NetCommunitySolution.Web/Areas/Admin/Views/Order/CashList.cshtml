@@ -1,0 +1,94 @@
+﻿@model NetCommunitySolution.Web.Areas.Admin.Models.Orders.CashListModel
+@{
+    ViewBag.Title = "套现列表";
+    ViewBag.ActiveMenu = "Order"; //The menu item will be active for this page.
+    ViewBag.ActiveItem = "Order-Cash"; //The menu item will be active for this page.
+}
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>套现列表</legend>
+</fieldset>
+<div class="layui-form-item">
+    <div class="layui-inline">
+        <label class="layui-form-label">时间</label>
+        <div class="layui-input-inline">
+            @Html.LayuiDateTimeFor(model => model.StartDate, "起始日期")
+        </div>
+        <div class="layui-form-mid">-</div>
+        <div class="layui-input-inline">
+            @Html.LayuiDateTimeFor(model => model.EndDate, "结束日期")
+        </div>
+    </div>
+    <div class="layui-inline">
+        @Html.LayUiLabelFor(model => model.OrderStatusId)
+        <div class="layui-input-inline">
+            @Html.LayuiDropDownListFor(model => model.OrderStatusId, Model.AvailableOrderStatuses)
+        </div>
+    </div>
+    <div class="layui-inline">
+        <button class="layui-btn layui-btn-warm" id="order-search"><i class="fa fa-search"></i>搜索</button>
+    </div>
+</div>
+<table class="layui-hide" id="order-grid" lay-filter="order-grid-filter"></table>
+@Html.AntiForgeryToken()
+
+<script type="text/html" id="op">
+    <!-- 这里的 checked 的状态只是演示 -->
+    <a class="layui-btn layui-btn-sm" href="@Url.Action("Edit")/{{d.Id}}">查看</a>
+</script>
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+
+        table.render({
+            elem: '#order-grid'
+            , url: '@Url.Action("CashList")'
+            , where: additionalData()
+            , cols: [[
+                { field: 'Id', title: 'ID', sort: true }
+                , { field: 'NickName', title: '申请人' }
+                , { field: 'Total', title: '提现金额', sort: true }
+                , { field: 'CreateTime', title: '操作时间', sort: true }
+                , { field: 'AgentName', title: '区代', sort: true }
+                , { field: 'Id', title: '操作', toolbar: '#op' }
+            ]]
+            , page: true
+            , method: "Post"
+            , id: "order-table"
+        });
+        $("#order-search").click(function () {
+            //执行重载
+            table.reload('order-table', {
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                }
+                , where: additionalData()
+            });
+        });
+
+    });
+
+
+
+    function additionalData() {
+        var data = {
+            StartDate: $('#@Html.FieldIdFor(model => model.StartDate)').val(),
+            EndDate: $('#@Html.FieldIdFor(model => model.EndDate)').val(),
+            OrderStatusId: $('#@Html.FieldIdFor(model => model.OrderStatusId)').val(),
+        };
+        addAntiForgeryToken(data);
+        return data;
+    }
+
+layui.use('laydate', function(){
+  var laydate = layui.laydate;
+
+  //执行一个laydate实例
+    laydate.render({
+        elem: '#@Html.FieldIdFor(model=>model.StartDate)' //指定元素
+    });
+    laydate.render({
+        elem: '#@Html.FieldIdFor(model=>model.EndDate)' //指定元素
+    });
+});
+</script>

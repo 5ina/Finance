@@ -1,0 +1,94 @@
+﻿
+.layui-body {
+  
+}
+.home-page .layui-border-box {
+    padding: 12px;
+}
+
+.home-page .info-box {
+    display: block;
+    min-height: 90px;
+    background: white;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    margin: 15px;
+}
+
+    .home-page .info-box .info-box-icon {
+        border-top-left-radius: 2px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 2px;
+        display: block;
+        float: left;
+        height: 90px;
+        width: 90px;
+        text-align: center;
+        font-size: 45px;
+        line-height: 90px;
+    }
+
+        .home-page .info-box .info-box-icon .layui-icon {
+            font-size: 45px;
+        }
+
+    .home-page .info-box .bg-aqua {
+        background: #00C0EF !important;
+    }
+
+    .home-page .info-box .bg-red {
+        background: #DD4B39 !important
+    }
+
+    .home-page .info-box .bg-green {
+        background: #00A65A !important
+    }
+
+    .home-page .info-box .info-box-content {
+        padding: 5px 10px;
+        margin-left: 90px;
+    }
+
+        .home-page .info-box .info-box-content .info-box-text {
+            font-weight: 700;
+        }
+
+        .home-page .info-box .info-box-content .info-box-number {
+            display: block;
+            font-size: 18px;
+            margin-top: 4px;
+        }
+.product-images{
+    width:100%;
+}
+.product-images .layui-upload-img{
+    width:50px;
+}
+.product-page .layui-elem-quote .layui-upload-list .product-preview-item {
+    display:inline-table;
+    margin-right:15px;
+    position:relative;
+}
+
+    .product-page .layui-elem-quote .layui-upload-list .product-preview-item:hover .opt-image {
+        display: block;
+    }
+.product-page .layui-elem-quote .layui-upload-list img{
+    width:90px;
+}
+
+.product-page .layui-elem-quote .layui-upload-list .opt-image{
+    width:100%;
+    position:absolute;
+    background:#0c0c0c;
+    opacity:0.7;
+    height:100%;
+    text-align:center;
+    line-height:45px;
+    display:none;
+}
+    .product-page .layui-elem-quote .layui-upload-list .opt-image a {
+        color: #fff;
+        display:block;
+    }

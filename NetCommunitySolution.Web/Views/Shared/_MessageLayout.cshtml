@@ -1,0 +1,9 @@
+﻿@using NetCommunitySolution.Web.Models.Common;
+@{
+    Layout = "~/Views/Shared/_Root.Head.cshtml";
+}
+<div class="page tabbar">
+    @RenderBody()
+
+    @Html.Partial("_BottomBar", TabbarMode.Message)
+</div>

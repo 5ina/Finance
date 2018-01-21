@@ -1,0 +1,108 @@
+﻿@model  NetCommunitySolution.Web.Models.Customers.SettlementModel
+@{
+    Html.AddTitleParts("我的结算卡");
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+}
+@if (!Model.Audit)
+{
+    <script type="text/javascript">
+
+    </script>
+    <!--Auth Dialog-->
+    <div class="js_dialog" id="audit-div" style="display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__bd">您未通过审核，请先审核您的账户信息</div>
+            <div class="weui-dialog__ft">
+                <span class="weui-dialog__btn weui-dialog__btn_primary">审核未通过</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var $dialog = $("#audit-div");
+        $dialog.fadeIn(200);
+
+        setTimeout(function () {
+            $dialog.fadeOut(100);
+        }, 2000);
+    </script>
+}
+
+<!--end toast-->
+<div class="page-mobile">
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "weui-cells_form", @id = "auth-form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="weui-cells__title">银行卡信息</div>
+
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                @Html.WELabelFor(model => model.bank_account_number)
+            </div>
+            <div class="weui-cell__bd">
+                @Html.WENumberFor(model => model.bank_account_number, Model.bank_account_number, "结算卡,收款卡卡号")
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                @Html.WELabelFor(model => model.bank_name)
+            </div>
+            <div class="weui-cell__bd">
+                @Html.WEDropDownListFor(model => model.bank_name, Html.GetBankNameList(Model.bank_name))
+            </div>
+        </div>
+
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                @Html.WELabelFor(model => model.area_code)
+            </div>
+            <div class="weui-cell__bd">
+                @Html.HiddenFor(model => model.area_code)
+                <a href="javascript:;" class="weui-btn weui-btn_default" id="showPicker">开户地区</a>
+            </div>
+        </div>
+
+        <div class="weui-flex">
+            <div class="weui-flex__item">
+                @Html.EditorFor(model => model.bank_card_photo)
+                <p class="placeholder">银行卡</p>
+            </div>
+
+            <div class="weui-flex__item">
+                @Html.EditorFor(model => model.person_photo)
+                <p class="placeholder">手持身份证</p>
+
+            </div>
+        </div>
+        <div class="weui-flex">
+            <div class="weui-flex__item">
+                @Html.EditorFor(model => model.id_card_photo)
+                <p class="placeholder">身份证正面</p>
+            </div>
+
+            <div class="weui-flex__item">
+                @Html.EditorFor(model => model.id_card_back_photo)
+                <p class="placeholder">身份证反面</p>
+
+            </div>
+        </div>
+        <div class="weui-btn-area">
+            <input type="submit" value="认证" class="weui-btn weui-btn_primary" />
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $('#showPicker').on('click', function () {
+
+        weui.picker(@Html.Action("Areas", "Customer"), {
+            onConfirm: function (result) {
+                $("#@Html.FieldIdFor(model=>model.area_code)").val(result[2]);
+                $("#showPicker").html(result[2])
+                }
+            });
+    });
+
+</script>
+

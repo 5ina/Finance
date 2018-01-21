@@ -1,0 +1,32 @@
+﻿@model NetCommunitySolution.Web.Models.Customers.MyPromoterModel
+@{
+    ViewBag.Title = "管理代理";
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+}
+
+<div class="page-promoter">
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "weui-cells_form", @id = "promoter-form" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+
+        <div class="weui-cells__title"></div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                @Html.WELabelFor(model => model.ExtensionCode)
+            </div>
+            <div class="weui-cell__bd">
+                @Html.WEEditorFor(model => model.ExtensionCode, true, "请输入推广码", "推广码格式不正确", "[a-z|A-Z]{10}")
+            </div>
+        </div>
+
+        <div class="weui-cell">
+        </div>
+        <div class="weui-btn-area">
+            <input type="submit" value="确定" class="weui-btn weui-btn_primary" />
+        </div>
+
+    }
+</div>

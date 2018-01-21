@@ -1,0 +1,26 @@
+﻿@model  NetCommunitySolution.Web.Models.Customers.CustomerRateModel
+@{
+    Html.AddTitleParts("我的费率");
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+}
+
+<!--end toast-->
+<div class="page-rate">
+
+    <div class="weui-cells__title">我的费率</div>
+
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">交易费率</label></div>
+        <div class="weui-cell__bd">
+            @Model.Rate
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">代付费（笔）</label></div>
+        <div class="weui-cell__bd">
+            @Model.Payment 元
+        </div>
+    </div>
+
+
+</div>

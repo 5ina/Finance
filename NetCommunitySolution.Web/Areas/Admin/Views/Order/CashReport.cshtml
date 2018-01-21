@@ -1,0 +1,27 @@
+﻿<table id="cash-grid" lay-filter="cash-grid-filter"></table>
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            elem: '#cash-grid'
+            , height: 315
+            , method: 'POST' //如果无需自定义HTTP类型，可不加该参数
+            , url: '@Url.Action("CashReport","Order")' //数据接口
+            , where: addAntiForgeryToken()
+            , cols: [[ //表头
+                { field: 'Id', title: 'ID', width: 60, sort: true, fixed: 'left' }
+                , { field: 'OrderSn', title: '订单号', sort: true }
+                , { field: 'Agent', title: '代理商',width: 90 }
+                , { field: 'Account', title: '交易金额', width: 100, sort: true }
+                , { field: 'DateTime', title: '交易时间', width: 190 }
+            ]]
+            , page: true
+            , method: "Post"
+            , id: "cash-table"
+        });
+
+    });
+
+</script>

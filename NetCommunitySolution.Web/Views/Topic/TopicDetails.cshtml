@@ -1,0 +1,20 @@
+﻿@model TopicModel
+@using NetCommunitySolution.Web.Models.Articles;
+@{ 
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+}
+@{
+    //title
+    Html.AddTitleParts(!String.IsNullOrEmpty(Model.MetaTitle) ? Model.MetaTitle : Model.Title);
+    //meta
+    Html.AddMetaDescriptionParts(Model.MetaDescription);
+    Html.AddMetaKeywordParts(Model.MetaKeywords);
+}
+
+<div class="page topic-page" id="ph-topic">
+    <div class="page-body">
+        <div class="cotent-body">
+            @Html.Raw(Model.Body)
+        </div>
+    </div>
+</div>

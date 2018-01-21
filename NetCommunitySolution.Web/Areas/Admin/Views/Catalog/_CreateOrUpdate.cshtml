@@ -1,0 +1,38 @@
+﻿@model NetCommunitySolution.Web.Areas.Admin.Models.Products.CategoryModel
+
+@Html.HiddenFor(model => model.Id)
+
+<div class="layui-form-item">
+    @Html.LayUiLabelFor(model => model.Name)
+    <div class="layui-input-block">
+        @Html.LayUiEditorFor(model => model.Name)
+    </div>
+</div>
+
+<div class="layui-form-item">
+    @Html.LayUiLabelFor(model => model.ParentId)
+    <div class="layui-input-block">
+        @Html.DropDownListFor(model => model.ParentId, Model.AvailableParentCategories)
+
+    </div>
+</div>
+
+<div class="layui-form-item">
+    @Html.LayUiLabelFor(model => model.Published)
+    <div class="layui-input-block">
+        @Html.LayUiEditorFor(model => model.Published)
+    </div>
+</div>
+<div class="layui-form-item">
+    @Html.LayUiLabelFor(model => model.DisplayOrder)
+    <div class="layui-input-block">
+        @Html.LayUiEditorFor(model => model.DisplayOrder)
+    </div>
+</div>
+<script>
+    layui.use('form', function () {
+        var form = layui.form;
+        //各种基于事件的操作，下面会有进一步介绍
+        form.render();
+    });
+</script>

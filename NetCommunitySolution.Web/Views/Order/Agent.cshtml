@@ -1,0 +1,83 @@
+﻿@model NetCommunitySolution.Web.Models.Orders.WeChatPaymentModel
+@{
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+    Html.AddTitleParts("升级代理");
+    @Html.IncludeScript("http://res.wx.qq.com/open/js/jweixin-1.1.0.js")
+    @Html.IncludeScript("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
+
+
+<div class="page-mobile">
+
+    @using (Ajax.BeginForm(null, null,
+                                                            new AjaxOptions
+                                                            {
+                                                                HttpMethod = "POST",
+                                                                OnSuccess = "SaveOrderSuccess",
+                                                            }, new { @class = "weui-cells_form", @id = "agent-form" }))
+    {
+
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Noncestr)
+        @Html.HiddenFor(model => model.OrderSn)
+        @Html.HiddenFor(model => model.TimeStamp)
+
+        <div class="weui-footer weui-footer_fixed-bottom">
+
+            <input type="submit" value="支付" class="weui-btn weui-btn_primary" />
+        </div>
+    }
+
+    <script type="text/javascript">
+
+        function SaveOrderSuccess(result) {
+            debugger;
+            if (result.OrderId > 0)
+                jsApiCall();
+        }
+            //调用微信JS api 支付
+            function jsApiCall()
+            {
+                WeixinJSBridge.invoke(
+                'getBrandWCPayRequest',
+                @Html.Raw(Model.wxJsApiParam),
+
+                    function (res)
+                    {
+                        WeixinJSBridge.log(res.err_msg);
+                        if (res.err_msg == "get_brand_wcpay_request:ok") {
+                            window.location.href = "@Url.Action("Success","Order")";
+                        }else{
+                            //返回跳转到订单详情页面
+                            alert("取消支付");
+
+                        }
+                    }
+                )
+            }
+
+            function callpay()
+            {
+
+                if (typeof WeixinJSBridge == "undefined")
+                {
+                    if (document.addEventListener)
+                    {
+                        document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                    }
+                    else if (document.attachEvent)
+                    {
+                        document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                        document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                    }
+                }
+                else
+                {
+                    jsApiCall();
+                }
+            }
+
+    </script>
+
+
+</div>

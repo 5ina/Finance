@@ -1,0 +1,27 @@
+﻿@model IList<NetCommunitySolution.Web.Models.Customers.AccountLogModel>
+
+<div class="log-list">
+    @foreach (var item in Model)
+    {
+        <div class="weui-form-preview">
+            <div class="weui-form-preview__hd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">@item.AccountMode.GetDescription()</label>
+                    <em class="weui-form-preview__value">¥@item.Money</em>
+                </div>
+            </div>
+            <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">交易时间</label>
+                    <span class="weui-form-preview__value">@item.CreationTime.ToString("yyyy.MM.dd HH:mm:ss")</span>
+                </div>
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">消息</label>
+                    <span class="weui-form-preview__value">@item.Message</span>
+                </div>
+            </div>
+
+        </div>
+        <br />
+    }
+</div>

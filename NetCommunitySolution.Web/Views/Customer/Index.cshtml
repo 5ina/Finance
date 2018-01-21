@@ -1,0 +1,137 @@
+﻿@model NetCommunitySolution.Web.Models.Customers.CustomerInfoModel
+@{
+    Html.AddTitleParts("会员中心");
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+
+<script type="text/javascript">
+    @if (!String.IsNullOrWhiteSpace(ViewBag.Result))
+    {
+    <text>
+        // toast
+    $(function () {
+        var $toast = $('#toast');
+
+        $toast.fadeIn(100);
+        setTimeout(function () {
+            $toast.fadeOut(100);
+        }, 2000);
+    });
+    </text>
+    }
+</script>
+
+<div id="toast" style="display: none;">
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast">
+        <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+        <p class="weui-toast__content">操作成功</p>
+    </div>
+</div>
+<div class="page-customer-info">
+    <div class="customer-info">
+
+        <div class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+                <img class="weui-media-box__thumb" src="@Model.CustomerAvatar" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+                <p> @Model.NickName</p>
+            </div>
+            @if (Model.Authentication)
+            {
+                <div class="weui-media-box abs authen-box">
+                    <i class="fa fa-check"></i> 已认证
+                </div>
+            }
+            else
+            {<div class="weui-media-box abs authen-box">
+                    <a href="@Url.Action("CustomerAuth","Customer")">
+                        未实名认证
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    @if (Model.Agent)
+    {
+
+        <div class="customer-account weui-flex">
+            <div class="weui-flex__item"><div class="placeholder"></div></div>
+            <div class="weui-flex__item">
+                <div class="placeholder">
+                    <a href="@Url.RouteUrl("Account")">
+                        <span class="value">佣金</span>
+                        <i class="fa fa-rmb">@Model.Account</i>
+                    </a>
+                </div>
+            </div>
+            <div class="weui-flex__item">
+                <div class="placeholder">
+                </div>
+            </div>
+        </div>
+
+    }
+    <div class="weui-grids">
+
+        @if (!Model.Agent)
+        {
+            <a href="@Url.Action("Agent", "Order")" class="weui-grid">
+                <div class="weui-grid__icon">
+                    <i class="fa fa-user fa-2x"></i>
+                </div>
+                <p class="weui-grid__label">升级代理</p>
+            </a>
+        }
+        @if (!Model.Agent)
+        {
+            <a href="@Url.Action("MyPromoter", "Customer")" class="weui-grid">
+                <div class="weui-grid__icon">
+                    <i class="fa fa-user fa-2x"></i>
+                </div>
+                <p class="weui-grid__label">关联代理</p>
+            </a>
+
+        }
+        @if (Model.Agent)
+        {
+            <a href="@Url.Action("Withdrawals", "Order")" class="weui-grid">
+                <div class="weui-grid__icon">
+                    <i class="fa fa-archive fa-2x"></i>
+                </div>
+                <p class="weui-grid__label">提现</p>
+            </a>
+
+        }
+        <a href="@Url.Action("Security","Customer")" class="weui-grid">
+            <div class="weui-grid__icon">
+                <i class="fa fa-key fa-fw fa-2x"></i>
+            </div>
+            <p class="weui-grid__label">安全管理</p>
+        </a>
+        <a href="@Url.RouteUrl("Payment")" class="weui-grid">
+            <div class="weui-grid__icon">
+                <i class="fa fa-credit-card-alt fa-2x"></i>
+            </div>
+            <p class="weui-grid__label">借款</p>
+        </a>
+
+        <a href="@Url.RouteUrl("Topic", new { SeName = "help" })" class="weui-grid">
+            <div class="weui-grid__icon">
+                <i class="fa fa-info fa-2x"></i>
+            </div>
+            <p class="weui-grid__label">帮助中心</p>
+        </a>
+
+        @*<a href="@Url.RouteUrl("Topic", new { SeName = "aboutus" })" class="weui-grid">
+            <div class="weui-grid__icon">
+                <i class="fa fa-font fa-2x"></i>
+            </div>
+            <p class="weui-grid__label">公司简介</p>
+        </a>*@
+    </div>
+</div>
+

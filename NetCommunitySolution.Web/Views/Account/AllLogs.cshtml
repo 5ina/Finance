@@ -1,0 +1,10 @@
+﻿@model IList<NetCommunitySolution.Web.Models.Customers.AccountLogModel>
+@{
+    Html.AddTitleParts("账户日志");
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+}
+
+
+<div class="all-log-page">
+    @Html.Partial("_AccountLogBox", Model)
+</div>

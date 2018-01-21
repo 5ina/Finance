@@ -1,0 +1,49 @@
+﻿@model NetCommunitySolution.Web.Areas.Admin.Models.Products.ProductModel
+@Html.ValidationSummary(false)
+@Html.HiddenFor(model => model.Id)
+
+
+<div class="product-page">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">基本信息</li>
+            <li>内容信息</li>
+        </ul>
+        <div class="layui-tab-content" style="height: 100px;">
+            <div class="layui-tab-item layui-show">
+
+                <div class="layui-row">
+                    <div class="layui-col-md7">
+                        @Html.Partial("_CreateOrUpdate.Pictrue", Model)
+
+
+                        @Html.Partial("_CreateOrUpdate.Info", Model)
+                    </div>
+                    <div class="layui-col-md5">
+                        @Html.Partial("_CreateOrUpdate.Prices", Model)
+                    </div>
+                </div>
+
+            </div>
+            <div class="layui-tab-item">
+
+                <div class="layui-form-item">
+                    @Html.LayUiLabelFor(model => model.FullDescription)
+                    <div class="layui-input-block">
+                        @Html.LayUiEditorFor(model => model.FullDescription)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        layui.use('form', function () {
+            var form = layui.form;
+            //各种基于事件的操作，下面会有进一步介绍
+            form.render();
+        });
+    </script>
+</div>

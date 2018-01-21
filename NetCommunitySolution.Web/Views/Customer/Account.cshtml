@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+}
+
+<div class="page-account">
+    <div class="account-title">
+        <div class="account-img">
+            <img src="~/images/diamond.png" width="150" />
+        </div>
+        <div class="account-content">
+            <p>账户余额</p>
+            <p class="account-balance"><i class="fa fa-rmb">700.00</i></p>
+        </div>
+
+        <div class="weui-btn-area">
+            <a class="weui-btn weui-btn_primary" href="">佣金日志</a>
+            <a class="weui-btn weui-btn_plain-default">提现</a>
+        </div>
+    </div>
+    <div class="weui-footer weui-footer_fixed-bottom">
+        <p class="weui-footer__links">
+            <a href="@Url.RouteUrl("Topic",new { SeName = "Problem"})" class="weui-footer__link">常见问题</a>
+        </p>
+        <p class="weui-footer__text">Copyright &copy; 2008-2016 jie-pang</p>
+    </div>
+</div>
+

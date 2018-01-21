@@ -1,0 +1,84 @@
+﻿@model NetCommunitySolution.Domain.Configuration.CommonSetting
+@using NetCommunitySolution.Domain.Configuration;
+@{
+    ViewBag.Title = "公共配置";
+    ViewBag.ActiveMenu = "Setting"; //The menu item will be active for this page.
+    ViewBag.ActiveItem = "Common-Setting"; //The menu item will be active for this page.
+}
+
+
+@if (!String.IsNullOrEmpty(ViewBag.Result))
+{
+    <script type="text/javascript">
+        layer.open({
+            title: '修改配置'
+            , content: '公共配置保存成功'
+        });
+    </script>
+}
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>公共配置</legend>
+</fieldset>
+@using (Html.BeginForm("Common", "Setting", FormMethod.Post, new { @id = "common-setting", @class = "layui-form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="layui-form-item">
+        <div class="layui-row">
+            <div class="layui-col-md1 layui-col-md-offset11">
+                <button class="layui-btn layui-btn-normal">保存</button>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.Name)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.Name)
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.Subtitle)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.Subtitle)
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.Title)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.Title)
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.Keywords)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.Keywords)
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.Description)
+
+        <div class="layui-input-block">
+            @Html.TextAreaFor(model => model.Description, new { @class = "layui-textarea" })
+        </div>
+    </div>
+    <div class="layui-form-item">
+        @Html.LayUiLabelFor(model => model.IsClose)
+
+        <div class="layui-input-block">
+            @Html.LayUiEditorFor(model => model.IsClose)
+        </div>
+    </div>
+    
+}
+<script>
+    layui.use('form', function () {
+        var form = layui.form;
+        //各种基于事件的操作，下面会有进一步介绍
+        form.render();
+    });
+</script>
+

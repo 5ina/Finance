@@ -1,0 +1,74 @@
+﻿@model NetCommunitySolution.Web.Areas.Admin.Models.Products.ProductModel
+
+
+<div class="layui-form-item">
+    @Html.LayUiLabelFor(model => model.AllowReward)
+    <div class="layui-input-block">
+        @Html.LayUiEditorFor(model => model.AllowReward)
+    </div>
+</div>
+
+<div class="layui-form-item">
+    <label class="layui-form-label" for="Special">促销</label>
+    <div class="layui-input-block">
+        <input type="checkbox" class="layui-input" name="Special" id="Special" lay-filter="Special" />
+    </div>
+</div>
+
+<div class="layui-form-item enabled-special-panel">
+    @Html.LayUiLabelFor(model => model.SpecialPrice)
+    <div class="layui-input-block">
+        @Html.LayUiEditorFor(model => model.SpecialPrice)
+    </div>
+</div>
+
+<div class="layui-form-item enabled-special-panel">
+    @Html.LayUiLabelFor(model => model.SpecialPriceStartDateTime)
+    <div class="layui-input-block">
+        @Html.LayuiDateTimeFor(model => model.SpecialPriceStartDateTime)
+    </div>
+</div>
+<div class="layui-form-item enabled-special-panel">
+    @Html.LayUiLabelFor(model => model.SpecialPriceEndDateTime)
+    <div class="layui-input-block">
+        @Html.LayuiDateTimeFor(model => model.SpecialPriceEndDateTime)
+    </div>
+</div>
+<script type="text/javascript">
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+
+        //常规用法
+        laydate.render({
+            elem: '#@(Html.FieldIdFor(model=>model.SpecialPriceEndDateTime))'
+            , done: function (value, date, endDate) {
+                debugger;
+            }
+        });
+        laydate.render({
+            elem: '#@(Html.FieldIdFor(model=>model.SpecialPriceStartDateTime))'
+        });
+    });
+
+    layui.use('form', function () {
+        var form = layui.form;
+        //各种基于事件的操作，下面会有进一步介绍
+        form.on('checkbox(Special)', function (data) {
+            toggleCaptcha(data.elem.checked);
+        });
+        form.render();
+    });
+
+    toggleCaptcha(document.getElementById("Special").checked);
+    function toggleCaptcha(checked) {
+        if (checked) {
+            $(".enabled-special-panel").show();
+        }
+        else {
+            $(".enabled-special-panel").hide();
+        }
+
+    }
+
+</script>
+
