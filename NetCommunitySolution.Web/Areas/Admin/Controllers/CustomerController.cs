@@ -37,7 +37,6 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
         }
         #endregion
 
-
         #region Utilities
         [NonAction]
         protected void PrepareCustomerRateModel(CustomerRateModel model)
@@ -49,7 +48,8 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
             model.MinRate = rateSetting.BaseRate;
         }
             #endregion
-        #region
+
+        #region Method
         public ActionResult Index()
         {
             return View();
@@ -81,7 +81,8 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
 
         public ActionResult Password()
         {
-            return View();
+            var model = new CustomerPasswordModel();
+            return View(model);
         }
 
         [HttpPost]
@@ -140,8 +141,6 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
         }
 
         #endregion
-
-
 
         #region Report 
 

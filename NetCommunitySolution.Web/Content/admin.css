@@ -1,6 +1,8 @@
-﻿
+﻿/* error */
+label.error {
+    color:#ff0000;
+}
 .layui-body {
-  
 }
 .home-page .layui-border-box {
     padding: 12px;

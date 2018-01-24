@@ -602,6 +602,8 @@
     <Content Include="Areas\Admin\Views\Customer\CustomerCharts.cshtml" />
     <Content Include="Areas\Admin\Views\Order\WithdrawalsList.cshtml" />
     <Content Include="Areas\Admin\Views\Order\CashList.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\Password.cshtml" />
+    <Content Include="Areas\Admin\Views\Customer\SetRate.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\admin.common.js" />
