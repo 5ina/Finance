@@ -12,5 +12,13 @@
         public string OrderSn { get; set; }
 
         public string wxJsApiParam { get; set; }
+
+
+        public decimal Total { get; set; }
+
+        public decimal Rate { get; set; }
+
+        public decimal CommonRate { get; set; }
+        
     }
 }

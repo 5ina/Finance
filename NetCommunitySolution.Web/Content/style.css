@@ -64,9 +64,21 @@ header .header-nav{
             margin-bottom: 20px;
             margin-top: 25px;
         }
+    .home-page .home-panel-button {
+        font-size:12px;
+        color:#333;
+    }
 
+        .home-page .home-panel-button h4.max-total {
+            color: #000;
+            font-size: 32px;
+        }
+        .home-page .home-panel-button p {
+            color: #95A5A6;
+            font-size: 12px;
+        }
 .cotent-body {
-    padding:15px 18px;
+    padding: 15px 18px;
 }
 .cotent-body p{
     margin:12px 0;
@@ -250,3 +262,31 @@ font-size:40px;
 .page-message .weui-icon-info {
     font-size:45px;
 }
+
+/*page-agent*/
+.page-agent .page__hd h1.page__title {
+    font-size: 18px;
+    text-align: center;
+    margin: 25px auto;
+}
+.page-agent .page__hd p.page__desc {
+    font-size: 14px;
+    text-align: center;
+}
+.page-agent .page__hd p.page__desc {
+    font-size: 14px;
+    text-align: center;
+}
+.page-agent .page__bd {
+    border-top:1px solid #ccc;
+    padding-top:30px;
+    margin-top:30px;
+}
+    .page-agent .page__bd p {
+        font-size: 14px;
+        text-align: center;
+    }
+    .page-agent .page__bd h3 {
+        font-size: 30px;
+        text-align: center;
+    }

@@ -7,9 +7,20 @@
 }
 
 
-<div class="page-mobile">
+<div class="page-agent">
+    <div class="page__hd">
+        <h1 class="page__title">升级区域代理</h1>
+        <p class="page__desc">享收最低费率</p>
+        <p class="page__desc">分最高利润</p>
 
-    @using (Ajax.BeginForm(null, null,
+    </div>
+    <div class="page__bd">
+
+        <p>仅需(元)</p>
+        <h3>@Model.Total</h3>
+        <p>即可享收 @(Model.Rate * 10) ‰ 的交易费,还可以拿到 @((Model.CommonRate - Model.Rate)* 10) ‰的分润.</p>
+
+        @using (Ajax.BeginForm(null, null,
                                                             new AjaxOptions
                                                             {
                                                                 HttpMethod = "POST",
@@ -24,11 +35,11 @@
 
         <div class="weui-footer weui-footer_fixed-bottom">
 
-            <input type="submit" value="支付" class="weui-btn weui-btn_primary" />
+            <input type="submit" value="升级代理" class="weui-btn weui-btn_primary" />
         </div>
-    }
+}
 
-    <script type="text/javascript">
+        <script type="text/javascript">
 
         function SaveOrderSuccess(result) {
             debugger;
@@ -77,7 +88,7 @@
                 }
             }
 
-    </script>
-
+        </script>
+    </div>
 
 </div>

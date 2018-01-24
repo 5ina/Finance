@@ -121,11 +121,37 @@ namespace NetCommunitySolution.Web.Controllers
             else if (customer.Agent != 0 && !agent)
                 model.Rate = accountSetting.MemberRate;
 
-            if(customer.CustomerRoleId == (int)CustomerRole.System)
+            if (customer.CustomerRoleId == (int)CustomerRole.System)
                 model.Rate = accountSetting.BaseRate;
-            
+
             model.PaymentFee = accountSetting.Payment;
             model.IsAuth = yeeAudit && yeeAuth;
+        }
+        private void PrepareAgentModel(WeChatPaymentModel model)
+        {
+            model.AppId = wechatSetting.AppId;
+            model.Noncestr = CommonHelper.GenerateNonceStr();
+            model.TimeStamp = CommonHelper.GetTimeStamp();
+            model.CommonRate = accountSetting.MemberRate;
+            model.OrderSn = CommonHelper.GenerateOrderSN();
+            model.Total = accountSetting.AgencyFee;
+            model.Rate = accountSetting.VendorRate;
+
+            var total = FormatTotal(accountSetting.AgencyFee);
+            var result = UnifiedOrder(model.Noncestr, "升级为代理商", model.OrderSn, total, model.TimeStamp);
+            //var jsApiString = GetJsApiParameters(result, wechatSetting.Key);
+            var handler = result.GetJsApiParametersRequest(wechatSetting.Key);
+            model.Signature = result["sign"].ToString();
+            var jsonData = new
+            {
+                appId = handler["appId"],
+                timeStamp = handler["timeStamp"],
+                nonceStr = handler["nonceStr"],
+                package = handler["package"],
+                signType = handler["signType"],
+                paySign = handler["paySign"],
+            };
+            model.wxJsApiParam = JsonConvert.SerializeObject(jsonData);
         }
         #endregion
 
@@ -223,27 +249,7 @@ namespace NetCommunitySolution.Web.Controllers
         public ActionResult Agent()
         {
             var model = new WeChatPaymentModel();
-            model.AppId = wechatSetting.AppId;
-            model.Noncestr = CommonHelper.GenerateNonceStr();
-            model.TimeStamp = CommonHelper.GetTimeStamp();
-
-            model.OrderSn = CommonHelper.GenerateOrderSN();
-            var total = FormatTotal(accountSetting.AgencyFee);
-            var result = UnifiedOrder(model.Noncestr, "升级为代理商", model.OrderSn, total, model.TimeStamp);
-            //var jsApiString = GetJsApiParameters(result, wechatSetting.Key);
-            var handler = result.GetJsApiParametersRequest(wechatSetting.Key);
-            model.Signature = result["sign"].ToString();
-            var jsonData = new
-            {
-                appId = handler["appId"],
-                timeStamp = handler["timeStamp"],
-                nonceStr = handler["nonceStr"],
-                package = handler["package"],
-                signType = handler["signType"],
-                paySign = handler["paySign"],
-            };
-            model.wxJsApiParam = JsonConvert.SerializeObject(jsonData);
-
+            PrepareAgentModel(model);
             return View(model);
         }
         [HttpPost]
