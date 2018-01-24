@@ -418,6 +418,7 @@ namespace NetCommunitySolution.Web.Controllers
         [HttpPost]
         public ActionResult Login(CustomerLoginModel model)
         {
+
             var loginResult = _customerService.ValidateCustomer(model.LoginName, model.Password, CustomerRole.System);
             switch (loginResult.Result)
             {
@@ -453,6 +454,8 @@ namespace NetCommunitySolution.Web.Controllers
 
         public ActionResult Login()
         {
+            if (AbpSession.UserId.HasValue)
+                return RedirectToAction("Index", "Home", new { Area = "Admin" });
             var model = new CustomerLoginModel();
             return View(model);
         }
