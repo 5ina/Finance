@@ -2,6 +2,14 @@
 
 <ul class="layui-nav layui-layout-right">
     <li class="layui-nav-item"><a href="/">返回前台</a></li>
-    <li class="layui-nav-item">@Model.NickName</li>
+    <li class="layui-nav-item">
+        <a href="javascript:;">@Model.NickName</a>
+        <dl class="layui-nav-child layui-anim layui-anim-upbit">
+            <dd>
+                <a href="@Url.Action("Password","Customer")">修改密码</a>
+            </dd>
+
+        </dl>
+    </li>
     <li class="layui-nav-item"><a href="@Url.RouteUrl("Logout")">退出</a></li>
 </ul>

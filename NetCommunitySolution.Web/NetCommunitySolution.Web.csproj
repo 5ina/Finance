@@ -666,6 +666,8 @@
     <Compile Include="Areas\Admin\Models\Articles\TopicModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\CustomerListModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\CustomerModel.cs" />
+    <Compile Include="Areas\Admin\Models\Customers\CustomerPasswordModel.cs" />
+    <Compile Include="Areas\Admin\Models\Customers\CustomerRateModel.cs" />
     <Compile Include="Areas\Admin\Models\Customers\CustomerReportModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\AgentReportModel.cs" />
     <Compile Include="Areas\Admin\Models\Orders\CashListModel.cs" />
@@ -830,7 +832,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61814</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

@@ -3592,3 +3592,234 @@ DEBUG 2018-01-21 20:16:53,403 [7    ] Abp.Modules.AbpModuleManager             -
 DEBUG 2018-01-21 20:16:53,404 [7    ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
 DEBUG 2018-01-21 20:16:53,405 [7    ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
 DEBUG 2018-01-21 20:16:53,405 [7    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2018-01-24 17:26:31,427 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-01-24 17:26:31,445 [1    ] Abp.Modules.AbpModuleManager             - Found 13 ABP modules in total.
+DEBUG 2018-01-24 17:26:31,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: NetCommunitySolution.Web.NetCommunitySolutionWebModule, NetCommunitySolution.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-24 17:26:31,456 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.2.5.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-24 17:26:31,456 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.2.5.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-24 17:26:31,457 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.2.5.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-24 17:26:31,457 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.2.5.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-24 17:26:31,457 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: NetCommunitySolution.NetCommunitySolutionDataModule, NetCommunitySolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-24 17:26:31,458 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.2.5.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-24 17:26:31,458 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.2.5.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-24 17:26:31,458 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: NetCommunitySolution.NetCommunitySolutionCoreModule, NetCommunitySolution.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-24 17:26:31,458 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: NetCommunitySolution.NetCommunitySolutionApplicationModule, NetCommunitySolution.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-24 17:26:31,458 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.2.5.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-24 17:26:31,459 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: NetCommunitySolution.NetCommunitySolutionWebApiModule, NetCommunitySolution.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-24 17:26:31,459 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.2.5.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-24 17:26:31,464 [1    ] Abp.Modules.AbpModuleManager             - 13 modules loaded.
+DEBUG 2018-01-24 17:26:31,886 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: NetCommunitySolution.EntityFramework.NetCommunitySolutionDbContext, NetCommunitySolution.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-01-24 17:26:34,909 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2018-01-24 17:26:34,937 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-01-24 17:26:34,939 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-01-24 17:26:34,946 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: NetCommunitySolution
+DEBUG 2018-01-24 17:26:34,953 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-01-24 17:26:35,020 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 14 classes define auto mapping attributes
+DEBUG 2018-01-24 17:26:35,020 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - NetCommunitySolution.Authentication.Dto.CustomerDto
+DEBUG 2018-01-24 17:26:35,024 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - NetCommunitySolution.Models.CustomerInfoModel
+DEBUG 2018-01-24 17:26:35,024 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - NetCommunitySolution.Web.Models.Orders.OrderModel
+DEBUG 2018-01-24 17:26:35,024 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - NetCommunitySolution.Web.Models.Messages.MessageModel
+DEBUG 2018-01-24 17:26:35,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - NetCommunitySolution.Web.Models.Customers.AccountLogModel
+DEBUG 2018-01-24 17:26:35,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - NetCommunitySolution.Web.Models.Customers.CustomerAuthModel
+DEBUG 2018-01-24 17:26:35,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - NetCommunitySolution.Web.Models.Customers.CustomerInfoModel
+DEBUG 2018-01-24 17:26:35,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - NetCommunitySolution.Web.Models.Customers.SettlementModel
+DEBUG 2018-01-24 17:26:35,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - NetCommunitySolution.Web.Models.BankCards.BankCardModel
+DEBUG 2018-01-24 17:26:35,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - NetCommunitySolution.Web.Areas.Admin.Models.Products.CategoryModel
+DEBUG 2018-01-24 17:26:35,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - NetCommunitySolution.Web.Areas.Admin.Models.Products.ProductModel
+DEBUG 2018-01-24 17:26:35,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - NetCommunitySolution.Web.Areas.Admin.Models.Customers.CustomerModel
+DEBUG 2018-01-24 17:26:35,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - NetCommunitySolution.Web.Areas.Admin.Models.Articles.TopicModel
+DEBUG 2018-01-24 17:26:35,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - NetCommunitySolution.Web.Areas.Admin.Models.Products.ProductModel+ProductPictureModel
+DEBUG 2018-01-24 17:26:35,293 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Seo.IUrlRecordService' with service name 'app/urlRecordService'.
+DEBUG 2018-01-24 17:26:35,294 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Security.IEncryptionService' with service name 'app/encryptionService'.
+DEBUG 2018-01-24 17:26:35,295 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Security.IPaymentService' with service name 'app/paymentService'.
+DEBUG 2018-01-24 17:26:35,296 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Security.IYeeSevice' with service name 'app/yeeSevice'.
+DEBUG 2018-01-24 17:26:35,297 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Routes.IRoutePublisher' with service name 'app/routePublisher'.
+DEBUG 2018-01-24 17:26:35,298 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Products.ICategoryService' with service name 'app/categoryService'.
+DEBUG 2018-01-24 17:26:35,299 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Products.IProductImagesService' with service name 'app/productImagesService'.
+DEBUG 2018-01-24 17:26:35,300 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Products.IProductService' with service name 'app/productService'.
+DEBUG 2018-01-24 17:26:35,302 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Orders.IOrderService' with service name 'app/orderService'.
+DEBUG 2018-01-24 17:26:35,303 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Messages.IPrivateMessageService' with service name 'app/privateMessageService'.
+DEBUG 2018-01-24 17:26:35,304 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Messages.ISMSMessageService' with service name 'app/sMSMessageService'.
+DEBUG 2018-01-24 17:26:35,305 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Media.IOssService' with service name 'app/ossService'.
+DEBUG 2018-01-24 17:26:35,306 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Directory.IAreaService' with service name 'app/areaService'.
+DEBUG 2018-01-24 17:26:35,307 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Customers.IAccountLogService' with service name 'app/accountLogService'.
+DEBUG 2018-01-24 17:26:35,309 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Customers.ICustomerAttributeService' with service name 'app/customerAttributeService'.
+DEBUG 2018-01-24 17:26:35,310 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Customers.ICustomerService' with service name 'app/customerService'.
+DEBUG 2018-01-24 17:26:35,311 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Common.ISettingService' with service name 'app/settingService'.
+DEBUG 2018-01-24 17:26:35,312 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'NetCommunitySolution.Articles.ITopicService' with service name 'app/topicService'.
+WARN  2018-01-24 17:29:03,504 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:29:03,545 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:29:03,558 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:29:03,558 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+INFO  2018-01-24 17:29:03,783 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 71 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:03,785 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Web.Areas.Admin.Controllers.HomeController.Index is executed by user 1 in 1 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:06,594 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:06,685 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerAttributeService.GetCountByValue is executed by user 1 in 85 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:08,231 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:08,477 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Orders.OrderService.GetAllOrders is executed by user 1 in 241 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:09,986 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:10,834 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Orders.OrderService.GetAllOrders is executed by user 1 in 841 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:10,844 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:10,852 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:10,861 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:12,494 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:12,496 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:12,611 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerAttributeService.GetAttributeByCustomerId is executed by user 1 in 110 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:12,663 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerAttributeService.GetAttributeByCustomerId is executed by user 1 in 49 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:12,729 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerAttributeService.GetAttributeByCustomerId is executed by user 1 in 63 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:12,792 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerAttributeService.GetAttributeByCustomerId is executed by user 1 in 59 ms from 192.168.3.161 IP address with succeed.
+WARN  2018-01-24 17:29:12,959 [16   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:29:12,968 [16   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:29:12,973 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:29:12,974 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:29:13,011 [5    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:29:13,011 [5    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:29:13,015 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:29:13,015 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:29:13,268 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:29:13,269 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:29:13,269 [5    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:29:13,269 [5    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:29:13,270 [16   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:29:13,304 [15   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:29:13,304 [15   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:29:13,307 [5    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:29:13,307 [5    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:29:13,407 [16   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:29:13,408 [16   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:29:13,408 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+INFO  2018-01-24 17:29:13,414 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:13,507 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Orders.OrderService.GetAllOrders is executed by user 1 in 54 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:13,523 [8    ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Web.Areas.Admin.Controllers.OrderController.PayReport is executed by user 1 in 76 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:13,928 [15   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:14,005 [15   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Orders.OrderService.GetAllOrders is executed by user 1 in 64 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:29:14,033 [15   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Web.Areas.Admin.Controllers.OrderController.CashReport is executed by user 1 in 99 ms from 192.168.3.161 IP address with succeed.
+WARN  2018-01-24 17:30:08,932 [22   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:08,932 [22   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+INFO  2018-01-24 17:30:08,932 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:08,932 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Web.Areas.Admin.Controllers.HomeController.Index is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:08,942 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:08,992 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerAttributeService.GetCountByValue is executed by user 1 in 45 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:10,400 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:10,470 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Orders.OrderService.GetAllOrders is executed by user 1 in 66 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:10,470 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:10,540 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Orders.OrderService.GetAllOrders is executed by user 1 in 72 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:10,550 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:10,560 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:10,570 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:10,590 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:10,590 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:10,640 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerAttributeService.GetAttributeByCustomerId is executed by user 1 in 45 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:10,691 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerAttributeService.GetAttributeByCustomerId is executed by user 1 in 47 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:10,731 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerAttributeService.GetAttributeByCustomerId is executed by user 1 in 47 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:10,781 [22   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerAttributeService.GetAttributeByCustomerId is executed by user 1 in 45 ms from 192.168.3.161 IP address with succeed.
+WARN  2018-01-24 17:30:10,871 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,871 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,871 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,871 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,883 [21   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,883 [21   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,883 [5    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,885 [16   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,886 [16   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,887 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,887 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,907 [22   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,908 [22   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,908 [7    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,908 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,908 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,914 [21   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,916 [21   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,917 [15   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,917 [15   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,924 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,924 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,941 [7    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,942 [7    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,946 [5    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,947 [5    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,954 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,955 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,956 [7    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,956 [7    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,970 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,970 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,978 [26   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,978 [26   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,978 [24   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:10,979 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:10,979 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,000 [24   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,000 [24   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,001 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,001 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,001 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,002 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,002 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,012 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,012 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,013 [26   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,014 [26   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,014 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,022 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,022 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,022 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,030 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,032 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,043 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,043 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,050 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,050 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,056 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,056 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,057 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,057 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,070 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,071 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,072 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,072 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,076 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,077 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,086 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,086 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,088 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,088 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,094 [22   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,095 [22   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,098 [21   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,099 [21   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,107 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,108 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,108 [25   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,116 [22   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,118 [22   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,119 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,119 [14   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,123 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,123 [17   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,129 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,129 [8    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,433 [7    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,433 [7    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,433 [15   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,434 [26   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,434 [26   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,442 [5    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,442 [5    ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,460 [15   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,460 [15   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,584 [24   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,584 [24   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+WARN  2018-01-24 17:30:11,585 [21   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support GetAllListAsync.
+WARN  2018-01-24 17:30:11,585 [21   ] Abp.Logging.LogHelper                    - ISettingStore is not implemented, using DefaultConfigSettingStore which does not support CreateAsync.
+INFO  2018-01-24 17:30:11,592 [24   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:11,650 [24   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Orders.OrderService.GetAllOrders is executed by user 1 in 55 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:11,663 [24   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Web.Areas.Admin.Controllers.OrderController.CashReport is executed by user 1 in 70 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:12,100 [27   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Customers.CustomerService.GetCustomerId is executed by user 1 in 0 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:12,176 [27   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Orders.OrderService.GetAllOrders is executed by user 1 in 64 ms from 192.168.3.161 IP address with succeed.
+INFO  2018-01-24 17:30:12,191 [27   ] Abp.Auditing.SimpleLogAuditingStore      - AUDIT LOG: NetCommunitySolution.Web.Areas.Admin.Controllers.OrderController.PayReport is executed by user 1 in 86 ms from 192.168.3.161 IP address with succeed.
+DEBUG 2018-01-24 17:55:29,606 [15   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2018-01-24 17:55:29,608 [15   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-01-24 17:55:29,609 [15   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-01-24 17:55:29,609 [15   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
