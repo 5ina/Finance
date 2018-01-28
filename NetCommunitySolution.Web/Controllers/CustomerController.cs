@@ -110,6 +110,7 @@ namespace NetCommunitySolution.Web.Controllers
             model.Authentication = audit && auth;
             model.Agent = customer.GetCustomerAttributeValue<bool>(CustomerAttributeNames.Agent);
             model.Account = customer.GetCustomerAttributeValue<decimal>(CustomerAttributeNames.Account);
+            model.AgentID = customer.Agent;
             return View(model);
         }
         

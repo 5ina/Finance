@@ -6,7 +6,7 @@ using System.ComponentModel;
 namespace NetCommunitySolution.Web.Models.Customers
 {
     [AutoMap(typeof(Customer))]
-    public class CustomerInfoModel:EntityDto
+    public class CustomerInfoModel : EntityDto
     {
 
         [DisplayName("手机号")]
@@ -27,6 +27,7 @@ namespace NetCommunitySolution.Web.Models.Customers
         /// </summary>
         public bool Agent { get; set; }
 
+        public int AgentID { get; set; }
         /// <summary>
         /// 我的佣金
         /// </summary>
