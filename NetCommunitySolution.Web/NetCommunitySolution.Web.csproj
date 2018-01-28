@@ -704,6 +704,7 @@
     <Compile Include="Framework\Seo\GenericPathRoute.cs" />
     <Compile Include="Framework\Seo\GenericPathRouteExtensions.cs" />
     <Compile Include="Framework\UI\LayoutExtensions.cs" />
+    <Compile Include="Framework\WeChat\Dto\WxConfigModel.cs" />
     <Compile Include="Framework\WeChat\HttpService.cs" />
     <Compile Include="Framework\WeChat\HttpWebResponseUtility.cs" />
     <Compile Include="Framework\WeChat\OAuthTokenModel.cs" />
@@ -721,6 +722,7 @@
     <Compile Include="Models\Customers\CustomerAuthModel.cs" />
     <Compile Include="Models\Customers\CustomerInfoModel.cs" />
     <Compile Include="Models\Customers\CustomerLoginModel.cs" />
+    <Compile Include="Models\Customers\CustomerQRModel.cs" />
     <Compile Include="Models\Customers\CustomerRateModel.cs" />
     <Compile Include="Models\Customers\ExtensionCodeModel.cs" />
     <Compile Include="Models\Customers\MyPromoterModel.cs" />
@@ -785,6 +787,7 @@
     <Content Include="Views\Order\Agent.cshtml" />
     <Content Include="Views\Order\Success.cshtml" />
     <Content Include="Views\Order\Withdrawals.cshtml" />
+    <Content Include="Views\Customer\MyQRCode.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

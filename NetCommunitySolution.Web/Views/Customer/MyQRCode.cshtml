@@ -1,0 +1,67 @@
+﻿@model NetCommunitySolution.Web.Models.Customers.CustomerQRModel
+@{
+    ViewBag.Title = "MyQRCode";
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+    @Html.IncludeScript("http://res.wx.qq.com/open/js/jweixin-1.1.0.js")
+}
+
+<div class="customer-qr-code">
+    <div class="qr-code">
+        <img src="@Model.QR_Url" />
+    </div>
+</div>
+<div class="customer-qr-title">
+    <p>您的推广码有效时间为<span class="red">@(Model.CreateTime.AddDays(Model.Expire).ToString("MM月dd日 hh:mm:ss"))</span>,请注意推广的时效性</p>
+    <p>@Model.QR_Url</p>
+</div>
+
+<!-- 微信分享 -->
+<script>
+    wx.config({
+        debug:false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '@Model.Config.appId', // 必填，公众号的唯一标识
+        timestamp: @Model.Config.timestamp, // 必填，生成签名的时间戳
+        nonceStr: '@Model.Config.noncestr', // 必填，生成签名的随机串
+        signature: '@Model.Config.signature',// 必填，签名，见附录1
+        jsApiList: [
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem',
+                'showAllNonBaseMenuItem',
+        ] // 必填，需要使用的JS接口列表，这里调用的是分享到朋友圈和分享给朋友
+    });
+
+
+    wx.ready(function () {
+        wx.onMenuShareTimeline({
+            title: '街旁闪付平台', // 分享标题
+            desc: 'D0秒到账，超低手续费', // 分享描述
+            link: '@(Request.Url.Host)@Url.Action("Detail", "Product", new { customerId = Model.CustomerID})', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: '@(Request.Url.Host)/Icon.png', // 分享图标
+            success: function () {
+                alert("朋友分享成功");
+            },
+            cancel: function () {
+                alert("朋友分享失败");
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title: '街旁闪付平台', // 分享标题
+            desc: 'D0秒到账，超低手续费', // 分享描述
+            link: '@(Request.Url.Host)@Url.Action("Detail", "Product", new { customerId = Model.CustomerID})', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: '@(Request.Url.Host)/Icon.png', // 分享图标
+            success: function () {
+                alert("朋友分享成功");
+            },
+            cancel: function () {
+                alert("朋友分享失败");
+            }
+        });
+    });
+</script>

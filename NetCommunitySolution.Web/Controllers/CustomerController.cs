@@ -7,13 +7,16 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using NetCommunitySolution.Authentication;
 using NetCommunitySolution.Authentication.Dto;
+using NetCommunitySolution.Common;
 using NetCommunitySolution.Customers;
 using NetCommunitySolution.Directory;
+using NetCommunitySolution.Domain.Configuration;
 using NetCommunitySolution.Domain.Customers;
 using NetCommunitySolution.Media;
 using NetCommunitySolution.Messages;
 using NetCommunitySolution.Security;
 using NetCommunitySolution.Security.YeeDto;
+using NetCommunitySolution.Web.Framework.WeChat;
 using NetCommunitySolution.Web.Models.Customers;
 using System;
 using System.IO;
@@ -46,6 +49,7 @@ namespace NetCommunitySolution.Web.Controllers
         private readonly IAreaService _areaService;
         private readonly IOssService _ossService;
         private readonly IYeeSevice _yeeService;
+        private readonly WechatSetting wechatSetting;
 
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         public CustomerController(
@@ -55,9 +59,10 @@ namespace NetCommunitySolution.Web.Controllers
                                 IEncryptionService encryptionService,
                                 ISMSMessageService messageService,
                                 IUnitOfWorkManager unitOfWorkManager,
-                                IAreaService areaService, 
-                                IOssService ossService, 
+                                IAreaService areaService,
+                                IOssService ossService,
                                 IYeeSevice yeeService,
+                                ISettingService settingService,
                                 LoginManager loginManager,
                                 CustomerManager customerManager)
         {
@@ -70,6 +75,7 @@ namespace NetCommunitySolution.Web.Controllers
             this._areaService = areaService;
             this._ossService = ossService;
             this._yeeService = yeeService;
+            this.wechatSetting = settingService.GetWeChatSettings();
 
             this._loginManager = loginManager;
             this._customerManager = customerManager;
@@ -409,6 +415,41 @@ namespace NetCommunitySolution.Web.Controllers
             }
             return View(model);
 
+        }
+        #endregion
+
+        #region 我的推广码
+        public ActionResult MyQRCode()
+        {
+            var customer = _customerService.GetCustomerId(this.CustomerId);
+            var expireTime = customer.GetCustomerAttributeValue<DateTime>(CustomerAttributeNames.QRCodeExpireTime);
+
+            var expire = wechatSetting.Expire;
+            var model = new CustomerQRModel();
+            model.CustomerID = this.CustomerId;
+            WeChatDefault wx = new WeChatDefault();
+            if (expireTime > DateTime.Now)
+            {
+                model.QR_Url = customer.GetCustomerAttributeValue<string>(CustomerAttributeNames.MyQR_Code);
+            }
+            else
+            {
+                var access_token = wx.GetAccessToken(wechatSetting.AppId, wechatSetting.AppSecret, _cacheManager);
+                string url = string.Format(QRCode_Url, access_token.access_token);
+                expireTime = DateTime.Now.AddSeconds(expire * 24 * 60 * 60);
+
+                var result = wx.QRCode(_cacheManager, wechatSetting.AppId, wechatSetting.AppSecret, expire * 24 * 60 * 60, false, this.CustomerId);
+                customer.SaveCustomerAttribute<DateTime>(CustomerAttributeNames.QRCodeExpireTime, expireTime);
+                customer.SaveCustomerAttribute<string>(CustomerAttributeNames.MyQR_Code, result);
+
+                model.QR_Url = result;
+            }
+            model.CreateTime = expireTime;
+            model.Expire = expire;
+
+            var config = wx.WxConfig(_cacheManager, wechatSetting.AppId, wechatSetting.AppSecret, Request.Url.Host + this.Request.Url.PathAndQuery);
+            model.Config = config;
+            return View(model);
         }
         #endregion
 

@@ -264,10 +264,12 @@ namespace NetCommunitySolution.Web.Controllers
         private Customer NewCustomer(Hashtable parameters)
         {
             var openId = parameters["FromUserName"].ToString();
-            var customer = _customerService.GetCustomerByOpenId(openId);
-            
+            var qrsceneValue = parameters["EventKey"].ToString().Replace("qrscene_", "");
+            var agent = 0;
+            if (!String.IsNullOrWhiteSpace(qrsceneValue))
+                agent = Convert.ToInt32(qrsceneValue);
+            var customer = _customerService.GetCustomerByOpenId(openId);            
             var code = CommonHelper.GenerateCode(6);
-
             if (customer == null || customer.Id == 0) // 判定用户是否存在
             {
                 var _encryptionService = Abp.Dependency.IocManager.Instance.Resolve<IEncryptionService>();
@@ -282,7 +284,7 @@ namespace NetCommunitySolution.Web.Controllers
                     PasswordSalt = code,
                     IsSubscribe = true,
                     CreationTime = DateTime.Now,
-                    Agent = 0,
+                    Agent = agent,
                 };
                 customer.Id = _customerService.CreateCustomer(customer);   
             }

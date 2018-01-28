@@ -39,6 +39,11 @@ namespace NetCommunitySolution.Domain.Configuration
         /// </summary>
         [DisplayName("回调")]
         public string NotifyUrl { get; set; }
+        /// <summary>
+        /// 二维码时间
+        /// </summary>
+        [DisplayName("有效推广时间")]
+        public int Expire { get; set; }
 
     }
 }

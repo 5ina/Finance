@@ -181,6 +181,10 @@
         /// </summary>
         public static string Token { get { return "net.setting.wechat.token"; } }
         /// <summary>
+        /// 有效推广时间
+        /// </summary>
+        public static string Expire { get { return "net.setting.wechat.expire"; } }
+        /// <summary>
         /// 微信支付商户Id
         /// </summary>
         public static string MchId { get { return "net.setting.wechat.mchid"; } }

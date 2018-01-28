@@ -205,6 +205,7 @@ namespace NetCommunitySolution.Common
                 MchId = _settingService.GetSettingByKey<string>(WechatSettingNames.MchId),
                 NotifyUrl = _settingService.GetSettingByKey<string>(WechatSettingNames.NotifyUrl),
                 Token = _settingService.GetSettingByKey<string>(WechatSettingNames.Token),
+                Expire = _settingService.GetSettingByKey<int>(WechatSettingNames.Expire),
             };
             return config;
         }
@@ -223,6 +224,7 @@ namespace NetCommunitySolution.Common
             _settingService.SaveSetting(WechatSettingNames.MchId, setting.MchId);
             _settingService.SaveSetting(WechatSettingNames.NotifyUrl, setting.NotifyUrl);
             _settingService.SaveSetting(WechatSettingNames.Token, setting.Token);
+            _settingService.SaveSetting(WechatSettingNames.Expire, setting.Expire);
         }
 
 

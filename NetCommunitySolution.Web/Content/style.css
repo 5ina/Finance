@@ -290,3 +290,15 @@ font-size:40px;
         font-size: 30px;
         text-align: center;
     }
+
+.customer-qr-code
+{
+    width:100%;
+}
+    .customer-qr-code .qr-code img{
+        width: 100%;
+    }
+    .customer-qr-code .customer-qr-title .red{
+        color:#ff0;
+        font-weight:700;
+    }
