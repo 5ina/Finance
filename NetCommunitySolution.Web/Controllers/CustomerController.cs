@@ -524,5 +524,15 @@ namespace NetCommunitySolution.Web.Controllers
             return View(model);
         }
         #endregion
+
+        #region report
+        [ChildActionOnly]
+        public ActionResult MyCustomers()
+        {
+            var customers = _customerService.GetCustomerByAgentId(this.CustomerId);
+            var count = customers.Count();
+            return Content(count.ToString());
+        }
+        #endregion
     }
 }

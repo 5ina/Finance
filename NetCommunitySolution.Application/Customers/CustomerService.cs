@@ -8,6 +8,7 @@ using Abp.Runtime.Caching;
 using NetCommunitySolution.Domain.Customers;
 using NetCommunitySolution.Authentication.Dto;
 using NetCommunitySolution.Security;
+using System.Collections.Generic;
 
 namespace NetCommunitySolution.Customers
 {
@@ -20,6 +21,9 @@ namespace NetCommunitySolution.Customers
         /// </summary>
         private const string CUSTOMER_BY_ID = "net.customer.by-id.{0}";
         private const string CUSTOMER_BY_OPENID = "net.customer.by-openid.{0}";
+        private const string CUSTOMER_BY_AGENT = "net.customer.by-agentid.{0}";
+
+        private const string CUSTOMER_PATTERN_KEY = "net.customer.";
 
 
         private readonly IRepository<Customer> _customerRepository;
@@ -49,12 +53,14 @@ namespace NetCommunitySolution.Customers
             if (customer == null)
                 throw new ArgumentNullException("customer");
 
+            _cacheManager.RemoveByPattern(CUSTOMER_PATTERN_KEY);
             return _customerRepository.InsertAndGetId(customer);
 
         }
 
         public void DeleteCustomer(int customerId)
         {
+            _cacheManager.RemoveByPattern(CUSTOMER_PATTERN_KEY);
             _customerRepository.Delete(customerId);
         }
 
@@ -134,10 +140,7 @@ namespace NetCommunitySolution.Customers
                 throw new ArgumentNullException("customer");
 
             _customerRepository.Update(customer);
-            if (customer.Id > 0)
-                _cacheManager.GetCache(string.Format(CUSTOMER_BY_ID, customer.Id)).Remove(customer.Id.ToString());
-            if (!String.IsNullOrWhiteSpace(customer.OpenId))
-                _cacheManager.GetCache(string.Format(CUSTOMER_BY_OPENID, customer.OpenId)).Remove(customer.OpenId);
+            _cacheManager.RemoveByPattern(CUSTOMER_PATTERN_KEY);
         }
 
         public async Task UpdateAsyncCustomer(Customer customer)
@@ -146,8 +149,7 @@ namespace NetCommunitySolution.Customers
                 throw new ArgumentNullException("customer");
 
             await _customerRepository.UpdateAsync(customer);
-            await _cacheManager.GetCache(string.Format(CUSTOMER_BY_ID, customer.Id)).RemoveAsync(customer.Id.ToString());
-            await _cacheManager.GetCache(string.Format(CUSTOMER_BY_OPENID, customer.OpenId)).RemoveAsync(customer.OpenId);
+            _cacheManager.RemoveByPattern(CUSTOMER_PATTERN_KEY);
         }
 
         public CustomerLoginResults ValidateCustomer(string loginName, string password, CustomerRole? role = null)
@@ -248,6 +250,15 @@ namespace NetCommunitySolution.Customers
                         select c;
             int count = query.Count();
             return count;
+        }
+
+        public List<Customer> GetCustomerByAgentId(int agentId)
+        {
+            var key = string.Format(CUSTOMER_BY_AGENT, agentId);
+            return _cacheManager.GetCache(key).Get(key, () =>
+            {
+                return _customerRepository.GetAllList(c => c.Agent == agentId);
+            });
         }
 
         #endregion
