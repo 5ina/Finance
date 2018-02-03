@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace NetCommunitySolution.Web.Controllers
 {
-    //[RestrictedAccess]
+    [RestrictedAccess]
     [WeChatAntiForgery]
     public class WeChatBaseController : NetCommunitySolutionControllerBase
     {

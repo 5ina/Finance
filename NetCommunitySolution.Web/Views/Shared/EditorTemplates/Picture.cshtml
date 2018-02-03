@@ -24,7 +24,14 @@
                 contentType: false,
                 enctype: "multipart/form-data",
                 beforeSend: function () {
-                    console.log("正在进行，请稍候");
+                    var $loadingToast = $('#loadingToast');
+                    if ($loadingToast.css('display') != 'none') return;
+                    $loadingToast.fadeIn(100);
+                },
+                complete: function () {
+                    var $loadingToast = $('#loadingToast');
+                    $loadingToast.hide();
+
                 },
                 success: function (data) {
                     $("#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-preview-@imgId").attr("src", "https://e1.img.vyicoo.cn/" + data.Url);
