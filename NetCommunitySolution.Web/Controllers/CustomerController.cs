@@ -101,7 +101,6 @@ namespace NetCommunitySolution.Web.Controllers
 
         public ActionResult Index()
         {
-            Logger.Debug("Index : CUstomer Id :" + this.CustomerId);
             var customer = _customerService.GetCustomerId(this.CustomerId);
             var model = customer.MapTo<CustomerInfoModel>();
             model.CustomerAvatar = customer.GetCustomerAttributeValue<string>(CustomerAttributeNames.Avatar);

@@ -23,5 +23,18 @@ namespace NetCommunitySolution
                 cache.GetCache(item.Name).Remove(item.Name);
             });
         }
+
+        /// <summary>
+        /// 清空缓存
+        /// </summary>
+        /// <param name="cache"></param>
+        public static void ClearCache(this ICacheManager cache)
+        {
+            var cacheList = cache.GetAllCaches();
+            cacheList.ToList().ForEach(item =>
+            {
+                cache.GetCache(item.Name).Remove(item.Name);
+            });
+        }
     }
 }
