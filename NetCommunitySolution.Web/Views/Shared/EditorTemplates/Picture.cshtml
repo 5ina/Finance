@@ -5,7 +5,7 @@
 }
 <div class="picture-url upload-img">
     <img id="@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-preview-@imgId" src="@if (!string.IsNullOrWhiteSpace(Model)) { <text>https://e1.img.vyicoo.cn/@Model</text>} else { <text>/images/photo.png</text>}" class="preview" />
-    <input id="@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-@imgId" name="image" class="input-upload-img" type="file" multiple="multiple" accept="image/png,image/jpeg">
+    <input id="@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-@imgId" name="image" class="input-upload-img" type="file" multiple="multiple" accept="image/png,image/jpeg" capture="camera">
     @Html.HiddenFor(model => model)
 </div>
 <script type="text/javascript">
@@ -24,11 +24,18 @@
                 contentType: false,
                 enctype: "multipart/form-data",
                 beforeSend: function () {
-                    console.log("正在进行，请稍候");
+                    var $loadingToast = $('#loadingToast');
+                    if ($loadingToast.css('display') != 'none') return;
+                    $loadingToast.fadeIn(100);
+                },
+                complete: function () {
+                    var $loadingToast = $('#loadingToast');
+                    $loadingToast.hide();
+
                 },
                 success: function (data) {
-                    $("#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-preview-@imgId").attr("src", "https://e1.img.vyicoo.cn/" + data.result.url);
-                    $("#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)").val(data.result.url);
+                    $("#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-preview-@imgId").attr("src", "https://e1.img.vyicoo.cn/" + data.Url);
+                    $("#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)").val(data.Url);
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert("上传失败，请检查网络后重试");

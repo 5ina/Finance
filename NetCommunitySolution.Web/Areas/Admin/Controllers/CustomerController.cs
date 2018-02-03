@@ -6,10 +6,7 @@ using NetCommunitySolution.Domain.Customers;
 using NetCommunitySolution.Security;
 using NetCommunitySolution.Web.Areas.Admin.Models.Customers;
 using NetCommunitySolution.Web.Framework.Layui;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace NetCommunitySolution.Web.Areas.Admin.Controllers
