@@ -150,6 +150,8 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
             var count = _attributeService.GetCountByValue(CustomerAttributeNames.Agent, true);
             var model = new CustomerReportModel();
             model.AgentCount = count;
+            var customers = _customerService.GetAllCustomers();
+            model.CustomerCount = customers.TotalCount;
             return PartialView(model);
         }
         #endregion
