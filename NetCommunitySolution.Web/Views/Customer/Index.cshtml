@@ -60,21 +60,32 @@
     @if (Model.Agent)
     {
 
-        <div class="customer-account weui-flex">
-            <div class="weui-flex__item"><div class="placeholder"></div></div>
-            <div class="weui-flex__item">
-                <div class="placeholder">
-                    <a href="@Url.RouteUrl("Account")">
-                        <span class="value">佣金</span>
-                        <i class="fa fa-rmb">@Model.Account</i>
-                    </a>
-                </div>
-            </div>
-            <div class="weui-flex__item">
-                <div class="placeholder">
-                </div>
+    <div class="customer-account weui-flex">
+        <div class="weui-flex__item">
+            <div class="placeholder">
+                <p>
+                    <span class="value">用户总消费</span>
+                    <i class="fa fa-rmb">@Html.Action("Turnover", "Customer")</i>
+                </p>
             </div>
         </div>
+        <div class="weui-flex__item">
+            <div class="placeholder">
+                <a href="@Url.RouteUrl("Account")">
+                    <span class="value">佣金</span>
+                    <i class="fa fa-rmb">@Model.Account</i>
+                </a>
+            </div>
+        </div>
+        <div class="weui-flex__item">
+            <div class="placeholder">
+                <p>
+                    <span class="value">我的用户</span>
+                    <i class="fa fa-user">@Html.Action("MyCustomers", "Customer")</i>
+                </p>
+            </div>
+        </div>
+    </div>
 
     }
     <div class="weui-grids">

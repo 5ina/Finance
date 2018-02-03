@@ -3,6 +3,7 @@ using Abp.Application.Services.Dto;
 using NetCommunitySolution.Authentication.Dto;
 using NetCommunitySolution.Domain.Customers;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace NetCommunitySolution.Customers
@@ -42,6 +43,8 @@ namespace NetCommunitySolution.Customers
         Customer GetCustomerId(int customerId);
 
         Customer GetCustomerByOpenId(string openId);
+
+        List<Customer> GetCustomerByAgentId(int agentId);
 
         /// <summary>
         /// 该用户是否存在

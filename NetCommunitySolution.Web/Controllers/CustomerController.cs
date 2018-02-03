@@ -14,6 +14,7 @@ using NetCommunitySolution.Domain.Configuration;
 using NetCommunitySolution.Domain.Customers;
 using NetCommunitySolution.Media;
 using NetCommunitySolution.Messages;
+using NetCommunitySolution.Orders;
 using NetCommunitySolution.Security;
 using NetCommunitySolution.Security.YeeDto;
 using NetCommunitySolution.Web.Framework.WeChat;
@@ -44,6 +45,7 @@ namespace NetCommunitySolution.Web.Controllers
         private readonly ICustomerService _customerService;
         private readonly IEncryptionService _encryptionService;
         private readonly ISMSMessageService _messageService;
+        private readonly IOrderService _orderService;
         private readonly LoginManager _loginManager;
         private readonly CustomerManager _customerManager;
         private readonly IAreaService _areaService;
@@ -63,6 +65,7 @@ namespace NetCommunitySolution.Web.Controllers
                                 IOssService ossService,
                                 IYeeSevice yeeService,
                                 ISettingService settingService,
+                                IOrderService orderService,
                                 LoginManager loginManager,
                                 CustomerManager customerManager)
         {
@@ -73,6 +76,7 @@ namespace NetCommunitySolution.Web.Controllers
             this._encryptionService = encryptionService;
             this._unitOfWorkManager = unitOfWorkManager;
             this._areaService = areaService;
+            this._orderService = orderService;
             this._ossService = ossService;
             this._yeeService = yeeService;
             this.wechatSetting = settingService.GetWeChatSettings();
@@ -453,7 +457,6 @@ namespace NetCommunitySolution.Web.Controllers
         }
         #endregion
 
-
         #region Login && Logout
 
         [HttpPost]
@@ -522,6 +525,27 @@ namespace NetCommunitySolution.Web.Controllers
             model.Payment = Convert.ToInt32(resultPayment.rate);
             return View(model);
         }
+        #endregion
+
+        #region report
+        [ChildActionOnly]
+        public ActionResult MyCustomers()
+        {
+            var customers = _customerService.GetCustomerByAgentId(this.CustomerId);
+            var count = customers.Count();
+            return Content(count.ToString());
+        }
+
+        [ChildActionOnly]
+        public ActionResult Turnover()
+        {
+            DateTime now = DateTime.Now;
+            var startTime = new DateTime(now.Year, now.Month, 1);
+            var orders = _orderService.GetAllOrders(createdFrom: startTime, agentId: this.CustomerId);
+            var total = orders.Items.Sum(o => o.OrderTotal);
+            return Content(total.ToString());
+        }
+
         #endregion
     }
 }
