@@ -52,6 +52,7 @@ namespace NetCommunitySolution.Web.Controllers
         private readonly IOssService _ossService;
         private readonly IYeeSevice _yeeService;
         private readonly WechatSetting wechatSetting;
+        private readonly IPrivateMessageService _privateMessageService;
 
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         public CustomerController(
@@ -66,6 +67,7 @@ namespace NetCommunitySolution.Web.Controllers
                                 IYeeSevice yeeService,
                                 ISettingService settingService,
                                 IOrderService orderService,
+                                IPrivateMessageService privateMessageService,
                                 LoginManager loginManager,
                                 CustomerManager customerManager)
         {
@@ -79,6 +81,7 @@ namespace NetCommunitySolution.Web.Controllers
             this._orderService = orderService;
             this._ossService = ossService;
             this._yeeService = yeeService;
+            this._privateMessageService = privateMessageService;
             this.wechatSetting = settingService.GetWeChatSettings();
 
             this._loginManager = loginManager;
@@ -335,9 +338,18 @@ namespace NetCommunitySolution.Web.Controllers
                 paymerch.sysmch_id = mchId.ToString();
                 #endregion
 
-
                 var result = _yeeService.Paymerchantreg(paymerch);
                 customer.SaveCustomerAttribute<bool>(CustomerAttributeNames.YeeAuth, result);
+                _privateMessageService.CreateMessage(new Domain.Messages.Message
+                {
+                    CreationTime = DateTime.Now,
+                    IsDeleted = false,
+                    IsRead = false,
+                    Subject = "账户审核",
+                    FromCustomerId = 0,
+                    ToCustomerId = this.CustomerId,
+                    Text = string.Format("您的账户已经提交审核，请等待管理员身后才可以操作信用卡业务,商户审核ID为{0}", mchId),
+                });
                 return RedirectToAction("Success");
             }
             return View(model);
