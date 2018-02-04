@@ -1,0 +1,72 @@
+﻿@model NetCommunitySolution.Web.Models.Customers.CustomerAgentListModel
+@{
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+}
+
+<div class="page-security">
+    <div class="weui-cells__title">
+        用户推广
+    </div>
+    <div class="weui-panel">
+        <div class="weui-panel__bd">
+            <div class="weui-media-box weui-media-box_small-appmsg">
+                <div class="weui-cells">
+
+                    <a class="weui-cell weui-cell_access">
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>推广总人数</p>
+                        </div>
+                        <div class="weui-cell__ft" style="font-size: 0">
+                            <i class="weui-icon-info-circle"></i>
+                            <span style="vertical-align:middle; font-size: 17px;">@Model.Total</span>
+
+                        </div>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="weui-panel">
+        <div class="weui-panel__bd">
+            <div class="weui-media-box weui-media-box_small-appmsg">
+                <div class="weui-cells">
+                    <a class="weui-cell weui-cell_access">
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>本月推广人数</p>
+                        </div>
+                        <div class="weui-cell__ft" style="font-size: 0">
+                            <i class="weui-icon-info-circle"></i>
+                            <span style="vertical-align:middle; font-size: 17px;">@Model.MonthTotal</span>
+
+                        </div>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="page__bd">
+        @foreach (var customer in Model.Customers)
+        {
+        <div class="weui-form-preview">
+            <div class="weui-form-preview__hd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">@customer.NickName</label>
+                    <em class="weui-form-preview__value">@customer.CreateTime</em>
+                </div>
+            </div>
+            <div class="weui-form-preview__bd">
+                <div class="weui-form-preview__item">
+                    <label class="weui-form-preview__label">手机</label>
+                    <span class="weui-form-preview__value">@customer.Mobile</span>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+

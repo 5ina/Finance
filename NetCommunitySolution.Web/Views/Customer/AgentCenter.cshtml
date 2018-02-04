@@ -1,0 +1,50 @@
+﻿@model NetCommunitySolution.Web.Models.Customers.CustomerAgentCenterModel
+@{
+    Layout = "~/Views/Shared/_TopicLayout.cshtml";
+}
+
+<div class="page-security">
+    <div class="weui-cells__title">
+        推广中心
+    </div>
+    <div class="weui-panel">
+        <div class="weui-panel__bd">
+            <div class="weui-media-box weui-media-box_small-appmsg">
+                <div class="weui-cells">
+
+                    <a class="weui-cell weui-cell_access" href="@Url.Action("MyCustomerList","Customer")">
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>推广人数</p>
+                        </div>
+                        <div class="weui-cell__ft" style="font-size: 0">
+                            <i class="weui-icon-info-circle"></i>
+                            <span style="vertical-align:middle; font-size: 17px;">@Model.CustomerCount</span>
+
+                        </div>
+
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="weui-panel">
+        <div class="weui-panel__bd">
+            <div class="weui-media-box weui-media-box_small-appmsg">
+                <div class="weui-cells">
+                    <a class="weui-cell weui-cell_access" href="javascript:;">
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>本月交易额</p>
+                        </div>
+                        <div class="weui-cell__ft money" style="font-size: 0">
+                            <span style="vertical-align:middle; font-size: 17px; color:#f00"><i class="fa fa-rmb"></i>@Model.TotalAmount</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

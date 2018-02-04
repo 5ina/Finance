@@ -91,34 +91,34 @@
     <div class="weui-grids">
 
         @if (!Model.Agent)
-        {
-            <a href="@Url.Action("Agent", "Order")" class="weui-grid">
-                <div class="weui-grid__icon">
-                    <i class="fa fa-user fa-2x"></i>
-                </div>
-                <p class="weui-grid__label">升级代理</p>
-            </a>
-        }
+    {
+        <a href="@Url.Action("Agent", "Order")" class="weui-grid">
+            <div class="weui-grid__icon">
+                <i class="fa fa-user fa-2x"></i>
+            </div>
+            <p class="weui-grid__label">升级代理</p>
+        </a>
+}
         @if (!Model.Agent && Model.AgentID == 0)
-        {
-            <a href="@Url.Action("MyPromoter", "Customer")" class="weui-grid">
-                <div class="weui-grid__icon">
-                    <i class="fa fa-user fa-2x"></i>
-                </div>
-                <p class="weui-grid__label">关联代理</p>
-            </a>
+    {
+        <a href="@Url.Action("MyPromoter", "Customer")" class="weui-grid">
+            <div class="weui-grid__icon">
+                <i class="fa fa-user fa-2x"></i>
+            </div>
+            <p class="weui-grid__label">关联代理</p>
+        </a>
 
-        }
+}
         @if (Model.Agent)
-        {
-            <a href="@Url.Action("Withdrawals", "Order")" class="weui-grid">
-                <div class="weui-grid__icon">
-                    <i class="fa fa-archive fa-2x"></i>
-                </div>
-                <p class="weui-grid__label">提现</p>
-            </a>
+    {
+        <a href="@Url.Action("Withdrawals", "Order")" class="weui-grid">
+            <div class="weui-grid__icon">
+                <i class="fa fa-archive fa-2x"></i>
+            </div>
+            <p class="weui-grid__label">提现</p>
+        </a>
 
-        }
+}
         <a href="@Url.Action("Security","Customer")" class="weui-grid">
             <div class="weui-grid__icon">
                 <i class="fa fa-key fa-fw fa-2x"></i>
@@ -132,14 +132,14 @@
             <p class="weui-grid__label">借款</p>
         </a>
         @if (Model.Agent)
-        {
-            <a href="@Url.Action("MyQRCode","Customer")" class="weui-grid">
-                <div class="weui-grid__icon">
-                    <i class="fa fa-info fa-2x"></i>
-                </div>
-                <p class="weui-grid__label">我的推广码</p>
-            </a>
-        }
+    {
+        <a href="@Url.Action("MyQRCode","Customer")" class="weui-grid">
+            <div class="weui-grid__icon">
+                <i class="fa fa-info fa-2x"></i>
+            </div>
+            <p class="weui-grid__label">我的推广码</p>
+        </a>
+}
         <a href="@Url.RouteUrl("Topic", new { SeName = "help" })" class="weui-grid">
             <div class="weui-grid__icon">
                 <i class="fa fa-info fa-2x"></i>
@@ -148,11 +148,22 @@
         </a>
 
         @*<a href="@Url.RouteUrl("Topic", new { SeName = "aboutus" })" class="weui-grid">
-                <div class="weui-grid__icon">1
-                    <i class="fa fa-font fa-2x"></i>
-                </div>
-                <p class="weui-grid__label">公司简介</p>
-            </a>*@
+            <div class="weui-grid__icon">1
+                <i class="fa fa-font fa-2x"></i>
+            </div>
+            <p class="weui-grid__label">公司简介</p>
+        </a>*@
+
+        @if (Model.Agent)
+    {
+        <a href="@Url.Action("AgentCenter", "Customer")" class="weui-grid">
+            <div class="weui-grid__icon">
+                <i class="fa fa-cloud fa-2x"></i>
+            </div>
+            <p class="weui-grid__label">推广中心</p>
+        </a>
+
+}
     </div>
 </div>
 

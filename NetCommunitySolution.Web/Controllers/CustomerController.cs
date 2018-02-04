@@ -35,6 +35,7 @@ namespace NetCommunitySolution.Web.Controllers
         private const string PRODUCTREVIEW_BY_CUSTOMERID = "strore.product.review.by.customerid-{0}";
         private const string FAVORITE_BY_CUSTOMERID = "strore.favorite.by.customerid-{0}";
 
+        private const string CUSTOMER_AGENT_CENTER = "store.customer.agent";
         /// <summary>
         /// 二维码请求URL
         /// </summary>
@@ -556,6 +557,47 @@ namespace NetCommunitySolution.Web.Controllers
             var orders = _orderService.GetAllOrders(createdFrom: startTime, agentId: this.CustomerId);
             var total = orders.Items.Sum(o => o.OrderTotal);
             return Content(total.ToString());
+        }
+
+        public ActionResult MyCustomerList()
+        {
+            var model = new CustomerAgentListModel();
+
+            DateTime now = DateTime.Now;
+            var startTime = new DateTime(now.Year, now.Month, 1);
+            var customers = _customerService.GetCustomerByAgentId(this.CustomerId);
+            model.Total = customers.Count();
+            var monthCustomers = customers.Where(e => e.CreationTime > startTime).ToList();
+            model.MonthTotal = monthCustomers.Count();
+
+            model.Customers = monthCustomers.Select(e => new CustomerAgentListModel.MyCustomer
+            {
+                CreateTime = e.CreationTime.ToString("yyyy/MM/dd"),
+                CustomerId = e.Id,
+                Mobile = e.Mobile,
+                NickName = e.NickName,
+            }).ToList();
+            return View(model);
+        }
+
+        /// <summary>
+        /// 推广中心
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AgentCenter()
+        {
+            var model = _cacheManager.GetCache(CUSTOMER_AGENT_CENTER).Get(CUSTOMER_AGENT_CENTER, ()=>
+            {
+                var customers = _customerService.GetCustomerByAgentId(this.CustomerId);
+                var centerModel = new CustomerAgentCenterModel();
+                centerModel.CustomerCount = customers.Count();
+                DateTime now = DateTime.Now;
+                var startTime = new DateTime(now.Year, now.Month, 1);
+                var orders = _orderService.GetAllOrders(createdFrom: startTime, agentId: this.CustomerId);
+                centerModel.TotalAmount = orders.Items.Sum(o => o.OrderTotal);
+                return centerModel;
+            });
+            return View(model);
         }
 
         #endregion

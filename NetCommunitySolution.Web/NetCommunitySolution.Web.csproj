@@ -719,6 +719,8 @@
     <Compile Include="Models\BankCards\CustomerCardsModel.cs" />
     <Compile Include="Models\Common\TabbarMode.cs" />
     <Compile Include="Models\Customers\AccountLogModel.cs" />
+    <Compile Include="Models\Customers\CustomerAgentCenterModel.cs" />
+    <Compile Include="Models\Customers\CustomerAgentListModel.cs" />
     <Compile Include="Models\Customers\CustomerAuthModel.cs" />
     <Compile Include="Models\Customers\CustomerInfoModel.cs" />
     <Compile Include="Models\Customers\CustomerLoginModel.cs" />
@@ -788,6 +790,8 @@
     <Content Include="Views\Order\Success.cshtml" />
     <Content Include="Views\Order\Withdrawals.cshtml" />
     <Content Include="Views\Customer\MyQRCode.cshtml" />
+    <Content Include="Views\Customer\AgentCenter.cshtml" />
+    <Content Include="Views\Customer\MyCustomerList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
