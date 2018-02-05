@@ -226,7 +226,7 @@ namespace NetCommunitySolution.Web.Controllers
             byte[] buffer = new byte[requestLength];
             Request.InputStream.Read(buffer, 0, requestLength);
             var requestString = System.Text.Encoding.UTF8.GetString(buffer);
-            requestString = "status=0&msg=%E9%A9%B3%E5%9B%9E%E9%80%9A%E7%9F%A5&op=paymerchantreg_notify&sysmch_id=5959&merchant_status=4&reason=%E7%AE%A1%E7%90%86%E5%91%98%E9%A9%B3%E5%9B%9E&sign=D986248F0D1FF273D3C3922EDE869170";
+            //requestString = "status=0&msg=%E9%A9%B3%E5%9B%9E%E9%80%9A%E7%9F%A5&op=paymerchantreg_notify&sysmch_id=5959&merchant_status=4&reason=%E7%AE%A1%E7%90%86%E5%91%98%E9%A9%B3%E5%9B%9E&sign=D986248F0D1FF273D3C3922EDE869170";
             Logger.Debug("异步通知：" + requestString);
 
             var hash = ParseUrl(requestString);
