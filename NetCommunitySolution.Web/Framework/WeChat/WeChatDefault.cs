@@ -177,8 +177,6 @@ namespace NetCommunitySolution.Web.Framework.WeChat
             {
                 return this.ticket;
             }
-
-
         }
 
     }

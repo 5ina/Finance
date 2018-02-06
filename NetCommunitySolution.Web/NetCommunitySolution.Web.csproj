@@ -704,6 +704,7 @@
     <Compile Include="Framework\Seo\GenericPathRoute.cs" />
     <Compile Include="Framework\Seo\GenericPathRouteExtensions.cs" />
     <Compile Include="Framework\UI\LayoutExtensions.cs" />
+    <Compile Include="Framework\WeChat\Dto\SendMessageModel.cs" />
     <Compile Include="Framework\WeChat\Dto\WxConfigModel.cs" />
     <Compile Include="Framework\WeChat\HttpService.cs" />
     <Compile Include="Framework\WeChat\HttpWebResponseUtility.cs" />

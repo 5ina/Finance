@@ -155,7 +155,6 @@ namespace NetCommunitySolution.Web.Controllers
         }
         #endregion
 
-
         #region Method Yee Pay
 
         public ActionResult YeePay()
@@ -200,6 +199,7 @@ namespace NetCommunitySolution.Web.Controllers
 
         }
         #endregion
+
         #region 提现
         public ActionResult Withdrawals()
         {

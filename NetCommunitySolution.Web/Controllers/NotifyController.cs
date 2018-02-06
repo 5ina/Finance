@@ -11,6 +11,7 @@ using NetCommunitySolution.Orders;
 using NetCommunitySolution.Security;
 using NetCommunitySolution.Web.Framework.Mvc;
 using NetCommunitySolution.Web.Framework.WeChat;
+using NetCommunitySolution.Web.Framework.WeChat.Dto;
 using NetCommunitySolution.Web.Models.Messages;
 using System;
 using System.Collections;
@@ -104,6 +105,7 @@ namespace NetCommunitySolution.Web.Controllers
             catch { }
             return hash;
         }
+        
         #endregion
 
         #region 分润
@@ -181,6 +183,8 @@ namespace NetCommunitySolution.Web.Controllers
                     customer.SaveCustomerAttribute<bool>(CustomerAttributeNames.YeeAuth, false);
                     break;
             }
+
+
         }
 
         /// <summary>
@@ -339,6 +343,11 @@ namespace NetCommunitySolution.Web.Controllers
         /// <param name="order"></param>
         /// <param name="amount"></param>
         /// <param name="customer"></param>
+        private void SendMessageToUser(WeChatMessageModel model)
+        {
+            SendOrderMessage(Newtonsoft.Json.JsonConvert.SerializeObject(model));
+        }
+
         private void SendMessageToUser(Order order, decimal amount, Customer customer)
         {
             var model = new WeChatMessageModel();
@@ -359,8 +368,24 @@ namespace NetCommunitySolution.Web.Controllers
                 picurl = "",
                 description = desc.ToString(),
             });
+            SendMessageToUser(model);
+        }
 
-            SendOrderMessage(Newtonsoft.Json.JsonConvert.SerializeObject(model));
+        private void SendMessageToUser(Customer customer,bool audit,string content)
+        {
+            var model = new WeChatMessageModel();
+            model.touser = customer.OpenId;
+            model.msgtype = "news";
+
+            StringBuilder desc = new StringBuilder();
+            desc.Append("审核通知");
+            desc.Append("\n");
+            if (audit)
+                desc.Append("恭喜您：用户审核失败");
+            else
+                desc.Append("您的状态审核失败：" + content);
+            
+            SendMessageToUser(model);
         }
 
 

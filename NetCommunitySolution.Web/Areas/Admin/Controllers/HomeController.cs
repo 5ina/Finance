@@ -28,7 +28,7 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
         public ActionResult ClearCache()
         {
             _cacheManager.ClearCache();
-            return Index();
+            return RedirectToAction("Index");
         }
         #endregion
     }
