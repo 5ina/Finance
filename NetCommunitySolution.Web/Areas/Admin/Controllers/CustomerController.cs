@@ -178,5 +178,16 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
         }
         #endregion
 
+
+        #region Status
+        [HttpPost]
+        public ActionResult CustomerStatus(int customerId) {
+            var customer = _customerService.GetCustomerId(customerId);
+
+            var result = _yeeService.MchQuery(customer.GetCustomerAttributeValue<int>(CustomerAttributeNames.SysMchId), customerId);
+            return Json(result);
+        }
+        #endregion
+
     }
 }

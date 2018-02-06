@@ -15,6 +15,14 @@ namespace NetCommunitySolution.Security
         int MchCreate(string mobile, int customerId);
 
         /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="mchId"></param>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        MchStatusResultModel MchQuery(int mchId, int customerId);
+
+        /// <summary>
         ///  注册支付系统
         /// </summary>
         /// <param name="model"></param>

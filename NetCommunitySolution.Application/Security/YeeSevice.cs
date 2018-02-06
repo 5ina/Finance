@@ -364,6 +364,21 @@ namespace NetCommunitySolution.Security
             var resultModel = JsonConvert.DeserializeObject<DefaultQueryResultModel>(result);
             return resultModel;
         }
+
+        public MchStatusResultModel MchQuery(int mchId, int customerId)
+        {
+            var mchurl = string.Format("{0}{1}", url, "/openapi/mch/mchquery ");
+            Hashtable hash = new Hashtable();
+            hash.Add("sysmch_id", mchId);
+            hash.Add("out_mch_id", customerId);
+            AddCommonParams(hash);//公共参数
+            hash.Add("sign", Sign(hash));//排序+签名
+
+            var result = Post(mchurl, hash);
+
+            var model = JsonConvert.DeserializeObject<MchStatusResultModel>(result);
+            return model;
+        }
         #endregion
     }
 }

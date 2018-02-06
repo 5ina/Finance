@@ -28,7 +28,11 @@
         <button class="layui-btn layui-btn-warm" id="customer-search"><i class="fa fa-search"></i>搜索</button>
     </div>
 </div>
-<table class="layui-hide" id="customer-grid" lay-filter="customer-grid-filter"></table>
+<div class="layui-table-body layui-table-main">
+    <div class="layui-main">
+        <table class="layui-hide" id="customer-grid" lay-filter="customer-grid-filter"></table>
+    </div>
+</div>
 @Html.AntiForgeryToken()
 
 <script type="text/html" id="op">
@@ -43,6 +47,9 @@
         <a class="layui-btn layui-btn-sm" href="@Url.Action("Edit")/{{d.Id}}" title="查看详情">
             <i class="layui-icon"></i>
         </a>
+        <a class="layui-btn layui-btn-sm" href="javascript:;" onclick="showStatus({{d.Id}})" title="状态查询">
+            <i class="layui-icon"></i>
+        </a>
     </div>
 </script>
 <script>
@@ -53,12 +60,13 @@ layui.use('table', function(){
         elem: '#customer-grid'
         , url: '@Url.Action("List")'
         , where: additionalData()
+        , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
         , cols: [[
-            { field: 'Id', title: 'ID', width: 80, sort: true, width: 150}
-            , { field: 'NickName', title: '用户名' }
+            { field: 'Id', title: 'ID', width: 80, sort: true}
+            , { field: 'NickName', title: '用户名', minWidth: 100}
             , { field: 'Mobile', title: '手机号', width: 150 }
             , { field: 'CreateTime', title: '创建时间', sort: true, width: 150}
-            , { field: 'Id', title: '操作', toolbar: '#op',width:150}
+            , { field: 'Id', title: '操作', toolbar: '#op',width:200 }
         ]]
         , page: true
         , method: "Post"
@@ -115,4 +123,18 @@ layui.use('table', function(){
         //各种基于事件的操作，下面会有进一步介绍
         form.render();
     });
+
+    function showStatus(obj) {
+        var data = {
+            customerId: obj,
+        }
+        $.ajax({
+            url: "@Url.Action("CustomerStatus", "Customer")?customerId=" + obj,
+            type: "Post",
+            data: addAntiForgeryToken(data),
+            success: function (data) {
+            }
+
+        })
+    }
 </script>
