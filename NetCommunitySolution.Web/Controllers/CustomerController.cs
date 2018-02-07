@@ -17,6 +17,7 @@ using NetCommunitySolution.Messages;
 using NetCommunitySolution.Orders;
 using NetCommunitySolution.Security;
 using NetCommunitySolution.Security.YeeDto;
+using NetCommunitySolution.Web.Framework.Controllers;
 using NetCommunitySolution.Web.Framework.WeChat;
 using NetCommunitySolution.Web.Models.Customers;
 using System;
@@ -27,6 +28,7 @@ using System.Web.Mvc;
 
 namespace NetCommunitySolution.Web.Controllers
 {
+    [Mobile]
     public class CustomerController : WeChatBaseController
     {
 
@@ -484,11 +486,14 @@ namespace NetCommunitySolution.Web.Controllers
                         var customerDto = loginResult.Customer.MapTo<CustomerDto>();
                         //生成ClaimsIdentity
                         var identity = _loginManager.CreateUserIdentity(customerDto);
-
                         //用户登录
                         AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = true }, identity);
-
-                        return RedirectToAction("Index", "Home", new { Area = "Admin" });
+                        if (customerDto.CustomerRole == CustomerRole.System)
+                        {
+                            return RedirectToAction("Index", "Home", new { Area = "Admin" });
+                        }
+                        else
+                            return RedirectToAction("Index", "Home");
 
                     }
 

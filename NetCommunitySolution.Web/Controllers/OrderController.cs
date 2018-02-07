@@ -7,6 +7,7 @@ using NetCommunitySolution.Domain.Customers;
 using NetCommunitySolution.Domain.Orders;
 using NetCommunitySolution.Orders;
 using NetCommunitySolution.Security;
+using NetCommunitySolution.Web.Framework.Controllers;
 using NetCommunitySolution.Web.Framework.WeChat;
 using NetCommunitySolution.Web.Models.Orders;
 using Newtonsoft.Json;
@@ -20,6 +21,7 @@ namespace NetCommunitySolution.Web.Controllers
     /// <summary>
     /// 订单控制器
     /// </summary>
+    [Mobile]
     public class OrderController : WeChatBaseController
     {
 
@@ -109,7 +111,6 @@ namespace NetCommunitySolution.Web.Controllers
 
         private void PrepareYeePaymentModel(YeePaymentModel model)
         {
-
             var customer = _customerService.GetCustomerId(this.CustomerId);
             var yeeAuth = customer.GetCustomerAttributeValue<bool>(CustomerAttributeNames.YeeAuth);
             var yeeAudit = customer.GetCustomerAttributeValue<bool>(CustomerAttributeNames.YeeAudit);

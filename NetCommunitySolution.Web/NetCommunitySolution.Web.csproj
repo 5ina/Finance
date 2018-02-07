@@ -436,6 +436,7 @@
     <Content Include="Content\flags\famfamfam-flags.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="images\logo.png" />
     <Content Include="images\diamond.png" />
     <Content Include="images\icon_tabbar.png" />
     <Content Include="images\photo.png" />
@@ -688,6 +689,7 @@
     <Compile Include="Controllers\WeChatBaseController.cs" />
     <Compile Include="Controllers\WeChatController.cs" />
     <Compile Include="Framework\Controllers\MemberLoginAttribute.cs" />
+    <Compile Include="Framework\Controllers\MobileAttribute.cs" />
     <Compile Include="Framework\Controllers\ParameterBasedOnFormNameAttribute.cs" />
     <Compile Include="Framework\Controllers\RestrictedAccessAttribute.cs" />
     <Compile Include="Framework\Htmls\AdminHtmlExtensions.cs" />

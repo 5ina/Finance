@@ -3,12 +3,14 @@ using Abp.Domain.Uow;
 using Abp.Runtime.Caching;
 using NetCommunitySolution.Customers;
 using NetCommunitySolution.Messages;
+using NetCommunitySolution.Web.Framework.Controllers;
 using NetCommunitySolution.Web.Models.Messages;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace NetCommunitySolution.Web.Controllers
 {
+    [Mobile]
     public class MessageController : WeChatBaseController
     {
 

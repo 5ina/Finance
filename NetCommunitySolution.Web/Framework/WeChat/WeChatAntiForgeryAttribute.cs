@@ -14,7 +14,9 @@ namespace NetCommunitySolution.Web.Framework.WeChat
         {
 
             var User_Agent = filterContext.RequestContext.HttpContext.Request.UserAgent;
-            
+
+            var Logger = Abp.Dependency.IocManager.Instance.Resolve<ILogger>();
+            Logger.Debug("WeChat" + User_Agent);
             //判定是否微信打开
             if (!User_Agent.ToLower().Contains("micromessenger"))
             {
@@ -22,7 +24,6 @@ namespace NetCommunitySolution.Web.Framework.WeChat
                 return;
             }
             
-            var Logger = Abp.Dependency.IocManager.Instance.Resolve<ILogger>();
             var abpSession = Abp.Dependency.IocManager.Instance.Resolve<IAbpSession>();
                         
             //判定是否子方法
