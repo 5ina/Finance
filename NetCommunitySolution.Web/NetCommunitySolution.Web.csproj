@@ -793,6 +793,7 @@
     <Content Include="Views\Customer\MyQRCode.cshtml" />
     <Content Include="Views\Customer\AgentCenter.cshtml" />
     <Content Include="Views\Customer\MyCustomerList.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Image.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

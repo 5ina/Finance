@@ -3,15 +3,14 @@
 @{
     var imgId = CommonHelper.GenerateCode(4);
 }
-<div class="picture-url upload-img">
-    <img id="@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-preview-@imgId" src="@if (!string.IsNullOrWhiteSpace(Model)) { <text>https://e1.img.vyicoo.cn/@Model</text>} else { <text>/images/photo.png</text>}" class="preview" />
-    <input id="@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-@imgId" name="image" class="input-upload-img weui-uploader__input" type="file" multiple="multiple" accept="image/*">
+<div class="weui-uploader__input-box picture-url upload-img">
+    <input id="#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-@imgId" class="weui-uploader__input input-upload-img" type="file" accept="image/*" multiple="">
     @Html.HiddenFor(model => model)
 </div>
 <script type="text/javascript">
     $(function () {
         $("#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-@imgId").change(function () {
-
+            alert("1");
             var formData = new FormData();
             formData.append("image", $("#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-@imgId")[0].files[0]);
             $.ajax({
@@ -28,15 +27,16 @@
                     if ($loadingToast.css('display') != 'none') return;
                     $loadingToast.fadeIn(100);
                 },
+                complete: function () {
+                    var $loadingToast = $('#loadingToast');
+                    $loadingToast.hide();
+
+                },
                 success: function (data) {
                     $("#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-preview-@imgId").attr("src", "https://e1.img.vyicoo.cn/" + data.Url);
                     $("#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)").val(data.Url);
-                    var $loadingToast = $('#loadingToast');
-                    $loadingToast.hide();
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    var $loadingToast = $('#loadingToast');
-                    $loadingToast.hide();
                     alert("上传失败，请检查网络后重试");
                 }
             });
