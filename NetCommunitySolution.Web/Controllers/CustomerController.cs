@@ -478,7 +478,7 @@ namespace NetCommunitySolution.Web.Controllers
         public ActionResult Login(CustomerLoginModel model)
         {
 
-            var loginResult = _customerService.ValidateCustomer(model.LoginName, model.Password, CustomerRole.System);
+            var loginResult = _customerService.ValidateCustomer(model.LoginName, model.Password);
             switch (loginResult.Result)
             {
                 case LoginResults.Successful:
