@@ -118,9 +118,9 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult SetRate(CustomerRateModel model)
         {
-            if (model.MinPayment < rateSetting.Payment)
+            if (model.Payment < rateSetting.Payment)
                 ModelState.AddModelError("", "您设置的单笔费用低于公共费率");
-            if (model.MinPayment > rateSetting.Payment)
+            if (model.Rate> rateSetting.BaseRate)
                 ModelState.AddModelError("", "您设置的交易费率低于公共费率");
             
             if (ModelState.IsValid)
