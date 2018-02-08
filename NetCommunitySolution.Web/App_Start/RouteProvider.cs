@@ -62,7 +62,7 @@ namespace NetCommunitySolution.Web.App_Start
                             new[] { "NetCommunitySolution.Web.Controllers" });
             //Logout
             routes.MapLocalizedRoute("Logout",
-                            "login",
+                            "logout",
                             new { controller = "Customer", action = "Logout" },
                             new[] { "NetCommunitySolution.Web.Controllers" });
 
