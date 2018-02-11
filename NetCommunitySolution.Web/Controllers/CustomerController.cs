@@ -186,6 +186,33 @@ namespace NetCommunitySolution.Web.Controllers
             return View(model);
         }
 
+        public ActionResult ChangePassword()
+        {
+            var model = new ChangePasswordModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(ChangePasswordModel model)
+        {
+            if (!model.NewPassword.Equals(model.ConfirmNewPassword))
+                ModelState.AddModelError("", "新密码输入不一致");
+
+            var customer = _customerService.GetCustomerId(this.CustomerId);
+            var oldPassword = _encryptionService.CreatePasswordHash(model.OldPassword, customer.PasswordSalt);
+            if(!oldPassword.Equals(customer.Password))
+                ModelState.AddModelError("", "密码错误，请从新输入");
+
+            if (ModelState.IsValid)
+            {
+                var newPassword = _encryptionService.CreatePasswordHash(model.NewPassword, customer.PasswordSalt);
+                customer.Password = newPassword;
+                _customerService.UpdateCustomer(customer);
+                return RedirectToAction("Security");
+            }
+            return View(model);
+        }
+
         #endregion
         #endregion
 
@@ -327,32 +354,32 @@ namespace NetCommunitySolution.Web.Controllers
             if (ModelState.IsValid)
             {
                 #region Save Attribute
-                var customer = _customerService.GetCustomerId(this.CustomerId);
-                var area = _areaService.GetAreaByCode(model.area_code);
-                model.region_text = string.Format("{0} {1} {2}", area.Province, area.City, area.County);
+                //var customer = _customerService.GetCustomerId(this.CustomerId);
+                //var area = _areaService.GetAreaByCode(model.area_code);
+                //model.region_text = string.Format("{0} {1} {2}", area.Province, area.City, area.County);
 
-                var paymerch = model.MapTo<PaymerchantregModel>();
+                //var paymerch = model.MapTo<PaymerchantregModel>();
                 #endregion
 
                 #region 创建易宝商户
-                var mchId = _yeeService.MchCreate(paymerch.bind_mobile, this.CustomerId);
-                customer.SaveCustomerAttribute<int>(CustomerAttributeNames.SysMchId, mchId);
-                customer.SaveYeeInfomation(_customerAttributeService, paymerch);
-                paymerch.sysmch_id = mchId.ToString();
+                //var mchId = _yeeService.MchCreate(paymerch.bind_mobile, this.CustomerId);
+                //customer.SaveCustomerAttribute<int>(CustomerAttributeNames.SysMchId, mchId);
+                //customer.SaveYeeInfomation(_customerAttributeService, paymerch);
+                //paymerch.sysmch_id = mchId.ToString();
                 #endregion
 
-                var result = _yeeService.Paymerchantreg(paymerch);
-                customer.SaveCustomerAttribute<bool>(CustomerAttributeNames.YeeAuth, result);
-                _privateMessageService.CreateMessage(new Domain.Messages.Message
-                {
-                    CreationTime = DateTime.Now,
-                    IsDeleted = false,
-                    IsRead = false,
-                    Subject = "账户审核",
-                    FromCustomerId = 0,
-                    ToCustomerId = this.CustomerId,
-                    Text = string.Format("您的账户已经提交审核，请等待管理员身后才可以操作信用卡业务,商户审核ID为{0}", mchId),
-                });
+                //var result = _yeeService.Paymerchantreg(paymerch);
+                //customer.SaveCustomerAttribute<bool>(CustomerAttributeNames.YeeAuth, result);
+                //_privateMessageService.CreateMessage(new Domain.Messages.Message
+                //{
+                //    CreationTime = DateTime.Now,
+                //    IsDeleted = false,
+                //    IsRead = false,
+                //    Subject = "账户审核",
+                //    FromCustomerId = 0,
+                //    ToCustomerId = this.CustomerId,
+                //    Text = string.Format("您的账户已经提交审核，请等待管理员身后才可以操作信用卡业务,商户审核ID为{0}", mchId),
+                //});
                 return RedirectToAction("Success");
             }
             return View(model);
@@ -538,7 +565,7 @@ namespace NetCommunitySolution.Web.Controllers
             var model = new CustomerRateModel();
             model.mch_Id = customer.GetCustomerAttributeValue<int>(CustomerAttributeNames.SysMchId);
             var resultRate = _yeeService.QueryRate(model.mch_Id, 1);
-            model.Rate = resultRate.rate / 1000;
+            model.Rate = resultRate.rate;
             var resultPayment = _yeeService.QueryRate(model.mch_Id, 3);
             model.Payment = Convert.ToInt32(resultPayment.rate);
             return View(model);

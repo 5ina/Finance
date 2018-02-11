@@ -13,6 +13,15 @@
         /// 通道一默认提现费率
         /// </summary>
         public int def_transferrate { get; set; }
+        /// <summary>
+        /// 通道一的默认交易费率
+        /// </summary>
+        public decimal def_rate7 { get; set; }
+
+        /// <summary>
+        /// 通道一默认提现费率
+        /// </summary>
+        public int def_transferrate7 { get; set; }
 
         /// <summary>
         /// 通道二默认交易费率

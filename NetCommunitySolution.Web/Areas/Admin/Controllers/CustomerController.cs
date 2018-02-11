@@ -36,11 +36,16 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
 
         #region Utilities
         [NonAction]
-        protected void PrepareCustomerRateModel(CustomerRateModel model)
+        protected void PrepareCustomerRateModel(CustomerRateModel model,int customerId)
         {
             if (model == null)
                 model = new CustomerRateModel();
-
+            var customer = _customerService.GetCustomerId(customerId);
+            var mchId = customer.GetCustomerAttributeValue<int>(CustomerAttributeNames.SysMchId);
+            var rateResult = _yeeService.QueryRate(mchId, 1);
+            model.Rate = rateResult.rate;
+            var payResult = _yeeService.QueryRate(mchId, 3);
+            model.Payment = payResult.rate;
             model.MinPayment = rateSetting.Payment;
             model.MinRate = rateSetting.BaseRate;
         }
@@ -111,7 +116,7 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
         public ActionResult SetRate(int id)
         {
             var model = new CustomerRateModel();
-            PrepareCustomerRateModel(model);
+            PrepareCustomerRateModel(model, id);
             return View(model);
         }
 
@@ -120,19 +125,18 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
         {
             if (model.Payment < rateSetting.Payment)
                 ModelState.AddModelError("", "您设置的单笔费用低于公共费率");
-            if (model.Rate> rateSetting.BaseRate)
+            if (model.Rate < rateSetting.BaseRate * 10)
                 ModelState.AddModelError("", "您设置的交易费率低于公共费率");
             
             if (ModelState.IsValid)
             {
                 var customer = _customerService.GetCustomerId(model.Id);
                 var mchId = customer.GetCustomerAttributeValue<int>(CustomerAttributeNames.SysMchId);
-                var rate = model.Rate * 10;
-                _yeeService.SetRate(mchId, 1, rate);
+                _yeeService.SetRate(mchId, 1,model.Rate);
                 _yeeService.SetRate(mchId, 3, model.Payment);
                 return RedirectToAction("Index");
             }
-            PrepareCustomerRateModel(model);
+            PrepareCustomerRateModel(model, model.Id);
             return View(model);
 
         }

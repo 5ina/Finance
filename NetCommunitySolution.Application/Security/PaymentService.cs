@@ -100,7 +100,7 @@ namespace NetCommunitySolution.Security
 
         }
 
-        public string PutOn(string putOnUrl)
+        public string SetDefaultRate(string putOnUrl)
         {
             return null;
 

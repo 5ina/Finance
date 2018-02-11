@@ -166,6 +166,7 @@ namespace NetCommunitySolution.Web.Controllers
             var mchId = Convert.ToInt32(hash["sysmch_id"]);
             var customerId = _attributeService.GetCustomerId<int>(CustomerAttributeNames.SysMchId, mchId);
             var customer = _customerService.GetCustomerId(customerId);
+
             switch (hash["merchant_status"])
             {
                 case "3":
@@ -176,11 +177,13 @@ namespace NetCommunitySolution.Web.Controllers
                         var rate = accountSetting.CommonRate * 10;
                         _yeeService.SetRate(mchId, 1, rate);
                         _yeeService.SetRate(mchId, 3, accountSetting.Payment);
+                        SendMessageToUser(customer, true, "您的账户审核通过");
                     }
                     break;
                 case "4":
                     customer.SaveCustomerAttribute<bool>(CustomerAttributeNames.YeeAudit, false);
                     customer.SaveCustomerAttribute<bool>(CustomerAttributeNames.YeeAuth, false);
+                    SendMessageToUser(customer, true, "您的账户审核失败,请从新审核");
                     break;
             }
 

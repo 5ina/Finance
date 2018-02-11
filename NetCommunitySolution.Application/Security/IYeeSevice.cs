@@ -99,11 +99,19 @@ namespace NetCommunitySolution.Security
         /// <summary>
         /// 设置默认交易费率
         /// </summary>
-        /// <param name="def_rate">通道一默认交易费率（万分3 的值为3）</param>
+        /// <param name="def_rate">通道一默认交易费率（千分之3 的值为3）</param>
         /// <param name="def_transferrate">通道一默认提现费率</param>
-        /// <param name="tf_def_rate">通道二默认交易费率（万分3 的值为3）</param>
+        /// <param name="tf_def_rate">通道二默认交易费率（千分之3 的值为3）</param>
         /// <param name="tf_def_transferrate">通道二默认提现费率</param>
         /// <returns></returns>
         DefaultQueryResultModel SetDefaultRate(decimal def_rate, int def_transferrate, decimal tf_def_rate, int tf_def_transferrate);
+
+        /// <summary>
+        /// 查询总分润
+        /// </summary>
+        /// <param name="sysmch_id"></param>
+        /// <param name="pay_type"></param>
+        /// <returns></returns>
+        BalanceResultModel Balance(int sysmch_id, int pay_type);
     }
 }

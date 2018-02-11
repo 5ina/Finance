@@ -722,6 +722,7 @@
     <Compile Include="Models\BankCards\CustomerCardsModel.cs" />
     <Compile Include="Models\Common\TabbarMode.cs" />
     <Compile Include="Models\Customers\AccountLogModel.cs" />
+    <Compile Include="Models\Customers\ChangePasswordModel.cs" />
     <Compile Include="Models\Customers\CustomerAgentCenterModel.cs" />
     <Compile Include="Models\Customers\CustomerAgentListModel.cs" />
     <Compile Include="Models\Customers\CustomerAuthModel.cs" />
@@ -796,6 +797,7 @@
     <Content Include="Views\Customer\AgentCenter.cshtml" />
     <Content Include="Views\Customer\MyCustomerList.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Image.cshtml" />
+    <Content Include="Views\Customer\ChangePassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

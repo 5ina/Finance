@@ -17,14 +17,16 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
         private readonly ISettingService _settingService;
         private readonly ICacheManager _cacheManager;
         private readonly IPaymentService _paymentService;
+        private readonly IYeeSevice _yeeService;
 
         public SettingController(ISettingService settingService, 
-            ICacheManager cacheManager,
+            ICacheManager cacheManager, IYeeSevice yeeService,
             IPaymentService paymentService)
         {
             this._settingService = settingService;
             this._cacheManager = cacheManager;
             this._paymentService = paymentService;
+            this._yeeService = yeeService;
         }
 
         #endregion
@@ -145,6 +147,8 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
         public ActionResult RateSetting()
         {
             var model = _settingService.GetAccountSettings();
+            var defaultRate = _yeeService.QueryDefaultRate();
+            ViewBag.Rate = Newtonsoft.Json.JsonConvert.SerializeObject(defaultRate);
             return View(model);
         }
         
@@ -157,9 +161,7 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
 
             if (continueEditing)
             {
-                var addUrl = "http://service.budianpay.com:8888/v1/merch/add";
-                var result = _paymentService.PutOn(addUrl);
-                
+                var result = _yeeService.SetDefaultRate(model.CommonRate * 10, Convert.ToInt32(model.Payment), 6, 1);                
             }
 
             return View(model);

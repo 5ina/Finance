@@ -208,6 +208,7 @@ namespace NetCommunitySolution.Web.Controllers
             PrepareWithdrawalsModel(model);
             return View(model);
         }
+        [HttpPost]
         public ActionResult Withdrawals(WithdrawalModel model)
         {
             if (ModelState.IsValid)

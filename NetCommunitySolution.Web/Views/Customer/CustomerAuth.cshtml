@@ -23,6 +23,7 @@
             </div>
             <div class="weui-cell__bd">
                 @Html.WETextBoxFor(model => model.legal_person, "真实姓名")
+                @Html.ValidationMessageFor(model => model.legal_person)
             </div>
         </div>
         <div class="weui-cell">
@@ -31,6 +32,7 @@
             </div>
             <div class="weui-cell__bd">
                 @Html.WEEditorFor(model => model.bind_mobile, "手机号,结算卡签约号", "*")
+                @Html.ValidationMessageFor(model => model.bind_mobile)
             </div>
         </div>
 
@@ -40,6 +42,7 @@
             </div>
             <div class="weui-cell__bd">
                 @Html.WEEditorFor(model => model.id_card, "身份证号,结算卡签约身份证", "*")
+                @Html.ValidationMessageFor(model => model.id_card)
             </div>
         </div>
 
@@ -51,6 +54,7 @@
             </div>
             <div class="weui-cell__bd">
                 @Html.WENumberFor(model => model.bank_account_number, Model.bank_account_number, "结算卡,收款卡卡号")
+                @Html.ValidationMessageFor(model => model.bank_account_number)
             </div>
         </div>
         <div class="weui-cell">
@@ -59,6 +63,7 @@
             </div>
             <div class="weui-cell__bd">
                 @Html.WEDropDownListFor(model => model.bank_name, Html.GetBankNameList(Model.bank_name))
+                @Html.ValidationMessageFor(model => model.bank_name)
             </div>
         </div>
 

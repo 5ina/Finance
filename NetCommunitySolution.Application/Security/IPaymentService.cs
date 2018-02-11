@@ -1,4 +1,5 @@
 ﻿using Abp.Application.Services;
+using NetCommunitySolution.Domain.Configuration;
 using NetCommunitySolution.Domain.Orders;
 using NetCommunitySolution.Security.dto;
 using System;
@@ -27,6 +28,12 @@ namespace NetCommunitySolution.Security
         /// <returns></returns>
         string Payment(PaymentcditossModel model, string key);
                 
-        string PutOn(string putOnUrl);
+        /// <summary>
+        /// 设置默认费率
+        /// </summary>
+        /// <param name="putOnUrl"></param>
+        /// <param name="setting"></param>
+        /// <returns></returns>
+        string SetDefaultRate(string putOnUrl);
     }
 }

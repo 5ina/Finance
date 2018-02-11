@@ -150,10 +150,10 @@ namespace NetCommunitySolution.Web.Framework.Htmls
         }
 
         public static MvcHtmlString WEPasswordFor<TModel, TValue>(this HtmlHelper<TModel> helper,
-                Expression<Func<TModel, TValue>> expression)
+                Expression<Func<TModel, TValue>> expression,string placeholder="")
         {
 
-            return helper.PasswordFor(expression, new { @class = "weui-input", @required = "required" });
+            return helper.PasswordFor(expression, new { @class = "weui-input", @required = "required", @placeholder = placeholder });
 
         }
         #endregion

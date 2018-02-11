@@ -35,7 +35,25 @@
         </div>
     </div>
 
+    @if (Model.IsAuth)
+    {
+        <div class="weui-panel">
+            <div class="weui-panel__bd">
+                <div class="weui-media-box weui-media-box_small-appmsg">
+                    <div class="weui-cells">
 
+                        <a class="weui-cell weui-cell_access" href="@Url.Action("Rate", "Customer")">
+
+                            <div class="weui-cell__bd weui-cell_primary">
+                                <p>我的费率</p>
+                            </div>
+                            <span class="weui-cell__ft"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
     <div class="weui-panel">
         <div class="weui-panel__bd">
             <div class="weui-media-box weui-media-box_small-appmsg">
@@ -83,7 +101,24 @@
                 </div>
             </div>
         </div>
-        
+
+    </div>
+
+    <div class="weui-panel">
+        <div class="weui-panel__bd">
+            <div class="weui-media-box weui-media-box_small-appmsg">
+                <div class="weui-cells">
+
+                    <a class="weui-cell weui-cell_access" href="@Url.Action("ChangePassword", "Customer")">
+
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p>修改密码</p>
+                        </div>
+                        <span class="weui-cell__ft"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="weui-panel">

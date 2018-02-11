@@ -303,3 +303,17 @@ font-size:40px;
         color:#ff0;
         font-weight:700;
     }
+
+    /* Error*/
+.field-validation-error{
+    color:#f00;
+    font-size:12px;
+    font-weight:700;
+}
+
+.validation-summary-errors {
+    color: #f00;
+    font-size: 12px;
+    font-weight: 700;
+    padding-bottom:20px;
+}

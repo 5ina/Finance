@@ -8,14 +8,13 @@
         </div>
         <p class="weui-tabbar__label">首页</p>
     </a>
-    <a href="@Url.Action("List","Message")" class="weui-tabbar__item @if (Model == NetCommunitySolution.Web.Models.Common.TabbarMode.Message) {<text>weui-bar__item_on</text>}">
+    <a href="https://c.duomai.com/track.php?k=o5CelRmbpZkMlwWb0hmRyUSbvNmLpFGZuVmcplnLnRjRyUiRyUSQzUycwRHdo1Ddm0DZpVXZmcjN5MTPklWYmMjNzkzMy0DZp9VZ0l2cmUWbvhmRyUyMyUyMENTJlBXeURnbllGbjZjMlEENFV0MCVjRyAjRDZkR5czQyUDR0M0Q1ETMEN0NxQEMENTJklEbl5mbhh2YGNTJs1Gd" class="weui-tabbar__item @if (Model == NetCommunitySolution.Web.Models.Common.TabbarMode.Message) {<text>weui-bar__item_on</text>}">
         <div  style="display: inline-block;position: relative;">
             <div class="weui-tabbar__icon">
-                <i class="fa fa-paper-plane"></i>
-            @Html.Action("MessageCount", "Message")
+                <i class="fa fa-eye"></i>
             </div>
         </div>
-        <p class="weui-tabbar__label">消息</p>
+        <p class="weui-tabbar__label">发现</p>
     </a>
 
     <a href="@Url.RouteUrl("Customer")" class="weui-tabbar__item @if (Model == NetCommunitySolution.Web.Models.Common.TabbarMode.User) {<text>weui-bar__item_on</text>}">

@@ -343,6 +343,8 @@ namespace NetCommunitySolution.Security
             var hash = new Hashtable();
             hash.Add("def_rate", def_rate.ToString("#0.00"));
             hash.Add("def_transferrate", def_transferrate);
+            hash.Add("def_rate7", def_rate.ToString("#0.00"));
+            hash.Add("def_transferrate7", def_transferrate);
             hash.Add("tf_def_rate", tf_def_rate.ToString("#0.00"));
             hash.Add("tf_def_transferrate", tf_def_transferrate);
             hash.Add("pay_type", 7);
@@ -367,7 +369,7 @@ namespace NetCommunitySolution.Security
 
         public MchStatusResultModel MchQuery(int mchId, int customerId)
         {
-            var mchurl = string.Format("{0}{1}", url, "/openapi/mch/mchquery ");
+            var mchurl = string.Format("{0}{1}", url, "/openapi/mch/mchquery");
             Hashtable hash = new Hashtable();
             hash.Add("sysmch_id", mchId);
             hash.Add("out_mch_id", customerId);
@@ -377,6 +379,21 @@ namespace NetCommunitySolution.Security
             var result = Post(mchurl, hash);
 
             var model = JsonConvert.DeserializeObject<MchStatusResultModel>(result);
+            return model;
+        }
+
+        public BalanceResultModel Balance(int sysmch_id, int pay_type)
+        {
+            var mchurl = string.Format("{0}{1}", url, "/openapi/mch/profit_balance");
+            Hashtable hash = new Hashtable();
+            hash.Add("sysmch_id", sysmch_id);
+            hash.Add("pay_type", pay_type);
+            AddCommonParams(hash);//公共参数
+            hash.Add("sign", Sign(hash));//排序+签名
+
+            var result = Post(mchurl, hash);
+
+            var model = JsonConvert.DeserializeObject<BalanceResultModel>(result);
             return model;
         }
         #endregion

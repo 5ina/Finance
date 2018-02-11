@@ -290,6 +290,7 @@
     <Compile Include="Routes\RoutePublisher.cs" />
     <Compile Include="Security\BigInteger.cs" />
     <Compile Include="Security\dto\CommonParamaterModelDto.cs" />
+    <Compile Include="Security\YeeDto\BalanceResultModel.cs" />
     <Compile Include="Security\YeeDto\MchStatusResultModel.cs" />
     <Compile Include="Security\dto\PaymentcditossModel.cs" />
     <Compile Include="Security\dto\PaymentModelDto.cs" />

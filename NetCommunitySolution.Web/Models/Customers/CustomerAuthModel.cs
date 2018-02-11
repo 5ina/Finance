@@ -14,21 +14,26 @@ namespace NetCommunitySolution.Web.Models.Customers
         /// </summary>
         public string sysmch_id { get; set; }
 
+        [Required]
         [DisplayName("姓名")]
         public string legal_person { get; set; }
+        [Required]
         [DisplayName("身份证")]
         public string id_card { get; set; }
 
+        [Required]
         [DisplayName("手机号")]
         public string bind_mobile { get; set; }
 
 
+        [Required]
         [DisplayName("结算银行卡")]
         public string bank_account_number { get; set; }
 
         /// <summary>
         /// 银行名称
         /// </summary>
+        [Required]
         [DisplayName("银行名称")]
         public string bank_name { get; set; }
 
@@ -71,7 +76,7 @@ namespace NetCommunitySolution.Web.Models.Customers
         /// </summary>
         [DisplayName("区域编码")]
         public string area_code { get; set; }
-        
+
         /// <summary>
         /// 是否认证通过
         /// </summary>

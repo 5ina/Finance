@@ -2,13 +2,12 @@
 using NetCommunitySolution.Domain.Customers;
 using NetCommunitySolution.Domain.Orders;
 using NetCommunitySolution.Orders;
+using NetCommunitySolution.Security;
 using NetCommunitySolution.Web.Areas.Admin.Models.Orders;
 using NetCommunitySolution.Web.Framework.Htmls;
 using NetCommunitySolution.Web.Framework.Layui;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace NetCommunitySolution.Web.Areas.Admin.Controllers
@@ -19,12 +18,14 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
         #region ctor && Fields
         private readonly IOrderService _orderService;
         private readonly ICustomerService _customerService;
+        private readonly IYeeSevice _yeeService;
 
         public OrderController(IOrderService orderService, 
-            ICustomerService customerService)
+            ICustomerService customerService, IYeeSevice yeeService)
         {
             this._orderService = orderService;
             this._customerService = customerService;
+            this._yeeService = yeeService;
         }
         #endregion
 
@@ -140,6 +141,8 @@ namespace NetCommunitySolution.Web.Areas.Admin.Controllers
                                                     createdTo: DateTime.Now);
             model.Total = orders.Items.Sum(o => o.OrderTotal);
             model.Number = orders.Items.Count();
+            var balanceModel = _yeeService.Balance(34385, 1);
+            model.Balance = balanceModel.profit;
             return PartialView(model);
         }
 
