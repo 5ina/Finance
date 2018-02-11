@@ -20,9 +20,11 @@ using NetCommunitySolution.Security.YeeDto;
 using NetCommunitySolution.Web.Framework.Controllers;
 using NetCommunitySolution.Web.Framework.WeChat;
 using NetCommunitySolution.Web.Models.Customers;
+using NetCommunitySolution.Web.Models.Messages;
 using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -354,32 +356,24 @@ namespace NetCommunitySolution.Web.Controllers
             if (ModelState.IsValid)
             {
                 #region Save Attribute
-                //var customer = _customerService.GetCustomerId(this.CustomerId);
-                //var area = _areaService.GetAreaByCode(model.area_code);
-                //model.region_text = string.Format("{0} {1} {2}", area.Province, area.City, area.County);
+                var customer = _customerService.GetCustomerId(this.CustomerId);
+                var area = _areaService.GetAreaByCode(model.area_code);
+                model.region_text = string.Format("{0} {1} {2}", area.Province, area.City, area.County);
 
-                //var paymerch = model.MapTo<PaymerchantregModel>();
+                var paymerch = model.MapTo<PaymerchantregModel>();
                 #endregion
 
                 #region 创建易宝商户
-                //var mchId = _yeeService.MchCreate(paymerch.bind_mobile, this.CustomerId);
-                //customer.SaveCustomerAttribute<int>(CustomerAttributeNames.SysMchId, mchId);
-                //customer.SaveYeeInfomation(_customerAttributeService, paymerch);
-                //paymerch.sysmch_id = mchId.ToString();
+                var mchId = _yeeService.MchCreate(paymerch.bind_mobile, this.CustomerId);
+                customer.SaveCustomerAttribute<int>(CustomerAttributeNames.SysMchId, mchId);
+                customer.SaveYeeInfomation(_customerAttributeService, paymerch);
+                paymerch.sysmch_id = mchId.ToString();
                 #endregion
 
-                //var result = _yeeService.Paymerchantreg(paymerch);
-                //customer.SaveCustomerAttribute<bool>(CustomerAttributeNames.YeeAuth, result);
-                //_privateMessageService.CreateMessage(new Domain.Messages.Message
-                //{
-                //    CreationTime = DateTime.Now,
-                //    IsDeleted = false,
-                //    IsRead = false,
-                //    Subject = "账户审核",
-                //    FromCustomerId = 0,
-                //    ToCustomerId = this.CustomerId,
-                //    Text = string.Format("您的账户已经提交审核，请等待管理员身后才可以操作信用卡业务,商户审核ID为{0}", mchId),
-                //});
+                var result = _yeeService.Paymerchantreg(paymerch);
+                customer.SaveCustomerAttribute<bool>(CustomerAttributeNames.YeeAuth, result);
+                //发送通知
+                SendMessageToUser(customer);
                 return RedirectToAction("Success");
             }
             return View(model);
@@ -632,6 +626,37 @@ namespace NetCommunitySolution.Web.Controllers
             return View(model);
         }
 
+        #endregion
+
+        #region wechat message
+        
+        [NonAction]
+        private void SendMessageToUser(Customer customer)
+        {
+            var model = new WeChatMessageModel();
+            model.touser = customer.OpenId;
+            model.msgtype = "news";
+
+            StringBuilder desc = new StringBuilder();
+            desc.Append("账户认证");
+            desc.Append("\n");
+
+            desc.Append("您的信息以及提交审核，请等待管理员审核后再进行操作");
+
+            SendMessage(Newtonsoft.Json.JsonConvert.SerializeObject(model));
+        }
+        
+
+        [NonAction]
+        private void SendMessage(string msg)
+        {
+            string msgUrl = "https://api.weixin.qq.com/cgi-bin/message/mass/send?access_token={0}";
+            WeChatDefault wxDefault = new WeChatDefault();
+            var token = wxDefault.GetAccessToken(wechatSetting.AppId, wechatSetting.AppSecret);
+            string url = string.Format(msgUrl, token.access_token);
+            HttpWebResponseUtility client = new HttpWebResponseUtility();
+            client.CreatePostHttpResponse(url: url, data: msg);
+        }
         #endregion
     }
 }
