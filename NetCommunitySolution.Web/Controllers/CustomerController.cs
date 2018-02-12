@@ -22,6 +22,9 @@ using NetCommunitySolution.Web.Framework.WeChat;
 using NetCommunitySolution.Web.Models.Customers;
 using NetCommunitySolution.Web.Models.Messages;
 using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -223,31 +226,31 @@ namespace NetCommunitySolution.Web.Controllers
         [DisableAbpAntiForgeryTokenValidation]
         public ActionResult AsyncUploadImage()
         {
-            Stream stream = null;
+            //Stream stream = null;
             var fileName = "";
             var contentType = "";
-            if (String.IsNullOrEmpty(Request["image"]))
-            {
+            //if (String.IsNullOrEmpty(Request["image"]))
+            //{
                 // IE
                 HttpPostedFileBase httpPostedFile = Request.Files[0];
                 if (httpPostedFile == null)
                     throw new ArgumentException("文件不存在");
-                stream = httpPostedFile.InputStream;
+                //stream = httpPostedFile.InputStream;
                 fileName = Path.GetFileName(httpPostedFile.FileName);
                 contentType = httpPostedFile.ContentType;
-            }
-            else
-            {
-                stream = Request.InputStream;
-                fileName = Request["image"];
-            }
+            //}
+            //else
+            //{
+            //    stream = Request.InputStream;
+            //    fileName = Request["image"];
+            //}
 
-            var fileBinary = new byte[stream.Length];
-            stream.Read(fileBinary, 0, fileBinary.Length);
-            stream.Close();
+            //var fileBinary = new byte[stream.Length];
+            //stream.Read(fileBinary, 0, fileBinary.Length);
+            //stream.Close();
 
             var fileExtension = Path.GetExtension(fileName);
-
+            var fileBinary = CompressionImage(httpPostedFile.InputStream, 30);
             var url = _yeeService.Uploadimage(fileBinary, contentType, fileExtension);
 
             return AbpJson(new
@@ -256,7 +259,39 @@ namespace NetCommunitySolution.Web.Controllers
                 Url =  url,
             });
         }
+        private byte[] CompressionImage(Stream fileStream, long quality)
+        {
+            
+            using (System.Drawing.Image img = System.Drawing.Image.FromStream(fileStream))
+            {
+                using (Bitmap bitmap = new Bitmap(img))
+                {
+                    ImageCodecInfo CodecInfo = GetEncoder(img.RawFormat);
+                    System.Drawing.Imaging.Encoder myEncoder = System.Drawing.Imaging.Encoder.Quality;
+                    EncoderParameters myEncoderParameters = new EncoderParameters(1);
+                    EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, quality);
+                    myEncoderParameters.Param[0] = myEncoderParameter;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        bitmap.Save(ms, CodecInfo, myEncoderParameters);
+                        myEncoderParameters.Dispose();
+                        myEncoderParameter.Dispose();
+                        return ms.ToArray();
+                    }
+                }
+            }
+        }
 
+        private static ImageCodecInfo GetEncoder(ImageFormat format)
+        {
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageDecoders();
+            foreach (ImageCodecInfo codec in codecs)
+            {
+                if (codec.FormatID == format.Guid)
+                { return codec; }
+            }
+            return null;
+        }
         #endregion
 
         #region 区县
@@ -326,6 +361,7 @@ namespace NetCommunitySolution.Web.Controllers
             return View(model);
         }
 
+        [UnitOfWork]
         [HttpPost]
         public ActionResult CustomerAuth(CustomerAuthModel model)
         {
@@ -372,8 +408,10 @@ namespace NetCommunitySolution.Web.Controllers
 
                 var result = _yeeService.Paymerchantreg(paymerch);
                 customer.SaveCustomerAttribute<bool>(CustomerAttributeNames.YeeAuth, result);
+                customer.Mobile = model.bind_mobile;
                 //发送通知
                 SendMessageToUser(customer);
+                _customerService.UpdateCustomer(customer);
                 return RedirectToAction("Success");
             }
             return View(model);

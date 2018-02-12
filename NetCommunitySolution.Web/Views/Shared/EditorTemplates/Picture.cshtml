@@ -4,8 +4,8 @@
     var imgId = CommonHelper.GenerateCode(4);
 }
 <div class="picture-url upload-img">
-    <img id="@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-preview-@imgId" src="@if (!string.IsNullOrWhiteSpace(Model)) { <text>https://e1.img.vyicoo.cn/@Model</text>} else { <text>/images/photo.png</text>}" class="preview" />
-    <input id="@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-@imgId" name="image" class="input-upload-img weui-uploader__input" type="file" multiple="multiple" accept="image/*">
+    <img id="@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-preview-@imgId" src="@if (!String.IsNullOrWhiteSpace(Model)) { <text>https://e1.img.vyicoo.cn/@Model</text>} else { <text>/images/photo.png</text>}" class="preview" />
+    <input id="@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)-@imgId" name="image" class="input-upload-img weui-uploader__input" type="file" multiple="multiple" accept="image/*" >
     @Html.HiddenFor(model => model)
 </div>
 <script type="text/javascript">
